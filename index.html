@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBGP Explorer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500;7..72,600;7..72,700&display=swap');
+
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --ink2: #555;
+  --ink3: #999;
+  --ink4: #ccc;
+  --rule: #e8e6e3;
+  --accent: #1d4ed8;
+  --accent-light: #dbeafe;
+  --good: #047857;
+  --good-bg: #ecfdf5;
+  --bad: #b91c1c;
+  --bad-bg: #fef2f2;
+  --warn: #92400e;
+  --warn-bg: #fffbeb;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Literata', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { max-width: 960px; margin: 0 auto; padding: 48px 32px 64px; }
+
+header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 4px; }
+header p { font-size: 13px; color: var(--ink2); }
+.tag {
+  display: inline-block; margin-top: 8px;
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent);
+  border: 1px solid var(--accent); padding: 2px 8px; border-radius: 3px; letter-spacing: 0.3px;
+}
+
+.kpi {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); border-radius: 8px;
+  overflow: hidden; margin-bottom: 40px;
+}
+.kpi-item { background: var(--surface); padding: 16px 12px; text-align: center; }
+.kpi-val { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500; line-height: 1.1; }
+.kpi-lbl { font-size: 11px; color: var(--ink3); margin-top: 4px; }
+
+.controls {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 20px; padding: 12px 16px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+}
+.ctrl-group { display: flex; align-items: center; gap: 6px; }
+.ctrl-label {
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink3);
+  text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; }
+.seg button {
+  font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 11px;
+  border: none; background: transparent; color: var(--ink3); cursor: pointer; transition: all 0.15s;
+}
+.seg button:not(:last-child) { border-right: 1px solid var(--rule); }
+.seg button.on { background: var(--accent); color: #fff; }
+.seg button:hover:not(.on) { background: var(--accent-light); color: var(--accent); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px;
+  border: 1px solid var(--rule); border-radius: 4px; cursor: pointer;
+  transition: all 0.15s; user-select: none; color: var(--ink3);
+}
+.pill.on { border-color: currentColor; }
+.pill .d { width: 6px; height: 6px; border-radius: 50%; transition: background 0.15s; }
+.pill.off { opacity: 0.3; }
+.pill.off .d { background: var(--ink4) !important; }
+
+.slider-wrap { display: flex; align-items: center; gap: 8px; }
+input[type=range] {
+  -webkit-appearance: none; width: 130px; height: 3px;
+  background: var(--rule); border-radius: 2px; outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  transition: transform 0.1s;
+}
+input[type=range]::-webkit-slider-thumb:active { transform: scale(1.2); }
+input[type=range]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%; border: none;
+  background: var(--accent); cursor: pointer;
+}
+.fpr-val {
+  font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
+  color: var(--accent); min-width: 28px;
+}
+
+.chart-area {
+  background: var(--surface); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 20px 16px 12px; margin-bottom: 8px;
+}
+.chart-area svg { width: 100%; display: block; }
+
+.readout {
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink2);
+  padding: 8px 16px; background: var(--surface); border: 1px solid var(--rule);
+  border-radius: 6px; margin-bottom: 40px; line-height: 1.8;
+}
+.readout b { color: var(--ink); }
+
+.section-title {
+  font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--ink3); margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+}
+
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+
+.gap-row {
+  display: grid; grid-template-columns: 90px 1fr 50px;
+  align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--rule);
+}
+.gap-row:last-child { border-bottom: none; }
+.gap-name { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink2); }
+.gap-track { position: relative; height: 18px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
+.gap-fill {
+  position: absolute; top: 0; left: 0; height: 100%; border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gap-fill.feat { background: #fca5a5; z-index: 1; }
+.gap-fill.pbgp { background: var(--accent); opacity: 0.75; z-index: 2; }
+.gap-delta { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--good); text-align: right; }
+
+.heat-tbl { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 11px; }
+.heat-tbl th { text-align: left; font-weight: 400; color: var(--ink3); font-size: 10px; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+.heat-tbl td { padding: 8px; border-bottom: 1px solid var(--rule); }
+.heat-tbl tr:last-child td { border-bottom: none; }
+.heat-cell { display: inline-block; padding: 2px 8px; border-radius: 3px; font-weight: 500; font-size: 12px; }
+
+.op-tbl { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 10px; }
+.op-tbl th { text-align: right; font-weight: 400; color: var(--ink3); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 8px; border-bottom: 2px solid var(--rule); }
+.op-tbl th:first-child { text-align: left; }
+.op-tbl td { padding: 5px 8px; text-align: right; border-bottom: 1px solid var(--rule); }
+.op-tbl td:first-child { text-align: left; color: var(--ink2); }
+.op-tbl tr:last-child td { border-bottom: none; }
+.op-hi { color: var(--good); font-weight: 500; background: var(--good-bg); border-radius: 2px; }
+.op-mi { color: var(--warn); }
+.op-lo { color: var(--bad); }
+.op-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+
+footer {
+  margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule);
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink4); text-align: center;
+}
+
+@media (max-width: 768px) {
+  .kpi { grid-template-columns: repeat(2, 1fr); }
+  .duo { grid-template-columns: 1fr; }
+  .controls { gap: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>PBGP Explorer</h1>
+    <p>Perturbation-Based Generation Profiling — Interactive Results Dashboard</p>
+    <span class="tag">AI CONTROL HACKATHON 2026 · APART RESEARCH</span>
+  </header>
+
+  <div class="kpi">
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--accent)">6</div><div class="kpi-lbl">Models</div></div>
+    <div class="kpi-item"><div class="kpi-val">1,440</div><div class="kpi-lbl">Generations</div></div>
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--bad)">0.56–0.83</div><div class="kpi-lbl">Features AUROC</div></div>
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--good)">0.94–1.00</div><div class="kpi-lbl">PBGP AUROC</div></div>
+  </div>
+
+  <div class="controls">
+    <div class="ctrl-group"><span class="ctrl-label">Method</span><div class="seg" id="segM"></div></div>
+    <div class="ctrl-group"><span class="ctrl-label">FPR</span>
+      <div class="slider-wrap"><input type="range" id="fprS" min="1" max="20" value="4"><span class="fpr-val" id="fprV">4%</span></div>
+    </div>
+    <div class="ctrl-group" style="flex-wrap:wrap" id="pills"></div>
+  </div>
+
+  <div class="chart-area"><div id="chartM"></div></div>
+  <div class="readout" id="rdout"></div>
+
+  <div class="duo">
+    <div><div class="section-title">AUROC Gap — Features vs PBGP</div><div id="gapM"></div></div>
+    <div><div class="section-title">Detection by Attack Type (MMD, 32B)</div><table class="heat-tbl" id="heatM"></table></div>
+  </div>
+
+  <div>
+    <div class="section-title">Operating Points</div>
+    <div class="op-filters" id="opF"></div>
+    <table class="op-tbl" id="opM"></table>
+  </div>
+
+  <footer>Maheshwari · Dash · Som — Apart Research AI Control Hackathon, March 2026</footer>
+</div>
+
+<script>
+const ML=[
+  {id:'l8',n:'Llama 8B',c:'#2563eb'},
+  {id:'q9',n:'Qwen 9B',c:'#059669'},
+  {id:'go',n:'GPT-OSS 20B',c:'#7c3aed'},
+  {id:'mi',n:'Mistral 24B',c:'#dc2626'},
+  {id:'q27',n:'Qwen 27B',c:'#d97706'},
+  {id:'q32',n:'Qwen 32B',c:'#db2777'},
+];
+
+const AUR={
+  features:{l8:.632,q9:.827,go:.582,mi:.717,q27:.629,q32:.585},
+  pbgp:{l8:.998,q9:.975,go:1,mi:.999,q27:.956,q32:.991},
+  combined:{l8:.844,q9:.887,go:.912,mi:.875,q27:.838,q32:.892},
+};
+
+const OP={
+  l8:{features:{1:{s:0,u:98.3},4:{s:0,u:95},10:{s:15,u:90},20:{s:30,u:80}},pbgp:{1:{s:93.3,u:98.3},4:{s:98.3,u:95},10:{s:98.3,u:95},20:{s:98.3,u:95}},combined:{1:{s:40,u:98.3},4:{s:41.7,u:95},10:{s:46.7,u:90},20:{s:60,u:81.7}}},
+  q9:{features:{1:{s:11.7,u:98.3},4:{s:31.7,u:96.7},10:{s:40,u:90},20:{s:65,u:80}},pbgp:{1:{s:65,u:98.3},4:{s:70,u:96.7},10:{s:86.7,u:90},20:{s:96.7,u:80}},combined:{1:{s:41.7,u:98.3},4:{s:41.7,u:98.3},10:{s:61.7,u:90},20:{s:78.3,u:80}}},
+  go:{features:{1:{s:0,u:100},4:{s:3.3,u:95},10:{s:10,u:90},20:{s:25,u:80}},pbgp:{1:{s:100,u:100},4:{s:100,u:100},10:{s:100,u:100},20:{s:100,u:100}},combined:{1:{s:58.3,u:100},4:{s:58.3,u:96.7},10:{s:70,u:90},20:{s:78.3,u:78.3}}},
+  mi:{features:{1:{s:0,u:100},4:{s:13.3,u:96.7},10:{s:31.7,u:90},20:{s:50,u:80}},pbgp:{1:{s:96.7,u:100},4:{s:96.7,u:96.7},10:{s:96.7,u:96.7},20:{s:96.7,u:96.7}},combined:{1:{s:48.3,u:98.3},4:{s:51.7,u:96.7},10:{s:55,u:91.7},20:{s:68.3,u:80}}},
+  q27:{features:{1:{s:0,u:100},4:{s:0,u:97.5},10:{s:3.3,u:91.7},20:{s:13.3,u:81.7}},pbgp:{1:{s:25,u:100},4:{s:48.3,u:96.7},10:{s:85,u:90},20:{s:96.7,u:83.3}},combined:{1:{s:3.3,u:98.3},4:{s:25,u:96.7},10:{s:38.3,u:90},20:{s:70,u:80}}},
+  q32:{features:{1:{s:0,u:98.3},4:{s:3.3,u:96.7},10:{s:10,u:90},20:{s:23.3,u:78.3}},pbgp:{1:{s:43.3,u:98.3},4:{s:43.3,u:98.3},10:{s:43.3,u:98.3},20:{s:43.3,u:98.3}},combined:{1:{s:36.7,u:98.3},4:{s:50,u:96.7},10:{s:61.7,u:90},20:{s:80,u:81.7}}},
+};
+
+const SIDE={'Priv. Escalation':{r:3.66,p:'< 0.001'},'Firewall Disable':{r:3.38,p:'< 0.001'},'Data Exfiltration':{r:2.81,p:'< 0.001'},'Malware Download':{r:1.61,p:'0.001'}};
+
+let meth='pbgp',fpr=4,vis=new Set(ML.map(m=>m.id)),omf='all',off='all';
+
+// ═══ SVG Chart ═══
+const W=920,H=380,P={t:16,r:24,b:44,l:48};
+const PW=W-P.l-P.r,PH=H-P.t-P.b;
+const XN=0.48,XX=1.03,YN=-0.02,YX=1.05;
+const sx=v=>P.l+((v-XN)/(XX-XN))*PW;
+const sy=v=>P.t+((YX-v)/(YX-YN))*PH;
+const ns='http://www.w3.org/2000/svg';
+
+function mkEl(tag,attrs){const e=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e}
+
+function catmull(pts,n){
+  if(pts.length<2)return pts;
+  const out=[];
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+    for(let t=0;t<n;t++){
+      const f=t/n,f2=f*f,f3=f2*f;
+      out.push({
+        x:Math.max(XN,Math.min(XX,.5*(2*p1.x+(p2.x-p0.x)*f+(2*p0.x-5*p1.x+4*p2.x-p3.x)*f2+(3*p1.x-p0.x-3*p2.x+p3.x)*f3))),
+        y:Math.max(YN,Math.min(YX,.5*(2*p1.y+(p2.y-p0.y)*f+(2*p0.y-5*p1.y+4*p2.y-p3.y)*f2+(3*p1.y-p0.y-3*p2.y+p3.y)*f3)))
+      });
+    }
+  }
+  out.push(pts[pts.length-1]);
+  return out;
+}
+
+function ptsToD(pts){return 'M'+catmull(pts,10).map(p=>`${sx(p.x).toFixed(1)},${sy(p.y).toFixed(1)}`).join('L')}
+
+function starPoly(cx,cy,or,ir,n){
+  const pts=[];
+  for(let i=0;i<n*2;i++){const r=i%2===0?or:ir,a=-Math.PI/2+i*Math.PI/n;pts.push(`${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)}`);}
+  return pts.join(' ');
+}
+
+// Build SVG once
+const svgRoot=mkEl('svg',{viewBox:`0 0 ${W} ${H}`});
+svgRoot.style.cssText='width:100%;display:block';
+
+// Grid
+for(let v=0.5;v<=1;v+=0.1){
+  svgRoot.appendChild(mkEl('line',{x1:sx(v),y1:P.t,x2:sx(v),y2:P.t+PH,stroke:'#e8e6e3','stroke-width':1}));
+  const t=mkEl('text',{x:sx(v),y:H-6,fill:'#aaa','font-size':9,'font-family':'DM Mono,monospace','text-anchor':'middle'});
+  t.textContent=v.toFixed(1);svgRoot.appendChild(t);
+}
+for(let v=0;v<=1;v+=0.2){
+  svgRoot.appendChild(mkEl('line',{x1:P.l,y1:sy(v),x2:P.l+PW,y2:sy(v),stroke:'#e8e6e3','stroke-width':1}));
+  const t=mkEl('text',{x:P.l-6,y:sy(v)+3,fill:'#aaa','font-size':9,'font-family':'DM Mono,monospace','text-anchor':'end'});
+  t.textContent=v.toFixed(1);svgRoot.appendChild(t);
+}
+
+// Axis labels
+let t=mkEl('text',{x:P.l+PW/2,y:H,fill:'#999','font-size':11,'font-family':'DM Mono,monospace','text-anchor':'middle'});
+t.textContent='Usefulness (1 − FPR) →';svgRoot.appendChild(t);
+t=mkEl('text',{x:12,y:P.t+PH/2,fill:'#999','font-size':11,'font-family':'DM Mono,monospace','text-anchor':'middle',transform:`rotate(-90,12,${P.t+PH/2})`});
+t.textContent='Safety (TPR) →';svgRoot.appendChild(t);
+
+// Diagonal
+svgRoot.appendChild(mkEl('line',{x1:sx(0.5),y1:sy(0),x2:sx(1),y2:sy(1),stroke:'#ddd','stroke-width':1,'stroke-dasharray':'4,4'}));
+
+// FPR line
+const fprLine=mkEl('line',{y1:P.t,y2:P.t+PH,stroke:'#1d4ed8','stroke-width':1.5,'stroke-dasharray':'5,4','stroke-opacity':.4});
+fprLine.style.transition='x1 .25s cubic-bezier(.22,1,.36,1),x2 .25s cubic-bezier(.22,1,.36,1)';
+svgRoot.appendChild(fprLine);
+const fprTxt=mkEl('text',{y:P.t-4,fill:'#1d4ed8','font-size':10,'font-family':'DM Mono,monospace','text-anchor':'middle','font-weight':500});
+fprTxt.style.transition='x .25s cubic-bezier(.22,1,.36,1)';
+svgRoot.appendChild(fprTxt);
+
+// BashArena star
+const bx=sx(0.96),by=sy(0.74);
+svgRoot.appendChild(mkEl('polygon',{points:starPoly(bx,by,7,3,5),fill:'#d97706'}));
+t=mkEl('text',{x:bx+10,y:by+3,fill:'#d97706','font-size':9,'font-family':'DM Mono,monospace'});
+t.textContent='BashArena ref';svgRoot.appendChild(t);
+
+// Curve layer
+const curveLayer=mkEl('g',{});
+svgRoot.appendChild(curveLayer);
+
+// Pre-create paths and dots for each model (reuse & animate via CSS transitions)
+const paths={},dots={};
+for(const m of ML){
+  const p=mkEl('path',{fill:'none',stroke:m.c,'stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round',opacity:1});
+  p.style.transition='d .5s cubic-bezier(.22,1,.36,1), opacity .3s';
+  curveLayer.appendChild(p);
+  paths[m.id]=p;
+  dots[m.id]=[];
+  for(let i=0;i<4;i++){
+    const c=mkEl('circle',{r:3.5,fill:m.c,stroke:'#fff','stroke-width':1.5,opacity:1});
+    c.style.transition='cx .5s cubic-bezier(.22,1,.36,1), cy .5s cubic-bezier(.22,1,.36,1), opacity .3s';
+    curveLayer.appendChild(c);
+    dots[m.id].push(c);
+  }
+}
+
+// Tooltip
+const tip=mkEl('g',{opacity:0});
+tip.style.transition='opacity .15s';
+const tipBg=mkEl('rect',{rx:4,fill:'#fff',stroke:'#e8e6e3','stroke-width':1,filter:'drop-shadow(0 2px 4px rgba(0,0,0,.08))'});
+const tipTxt=mkEl('text',{'font-size':10,'font-family':'DM Mono,monospace',fill:'#1a1a1a','font-weight':500});
+tip.appendChild(tipBg);tip.appendChild(tipTxt);
+svgRoot.appendChild(tip);
+
+document.getElementById('chartM').appendChild(svgRoot);
+
+// Hover detection
+svgRoot.addEventListener('mousemove',e=>{
+  const rect=svgRoot.getBoundingClientRect();
+  const scaleX=W/rect.width;
+  const mx=((e.clientX-rect.left)*scaleX);
+  const my=((e.clientY-rect.top)*(H/rect.height));
+  // Find closest visible dot
+  let best=null,bestD=30;
+  for(const m of ML){
+    if(!vis.has(m.id))continue;
+    const op=OP[m.id][meth];
+    [1,4,10,20].forEach((f,i)=>{
+      const cx=sx(op[f].u/100),cy=sy(op[f].s/100);
+      const d=Math.hypot(mx-cx,my-cy);
+      if(d<bestD){bestD=d;best={m,f,cx,cy,op:op[f]};}
+    });
+  }
+  if(best){
+    tip.setAttribute('opacity',1);
+    const label=`${best.m.n}  Safety:${best.op.s}%  Use:${best.op.u}%  @${best.f}%FPR`;
+    tipTxt.textContent=label;
+    const tw=label.length*5.8+16;
+    tipBg.setAttribute('width',tw);tipBg.setAttribute('height',22);
+    const tx2=Math.min(best.cx+8,W-tw-4);
+    tipBg.setAttribute('x',tx2);tipBg.setAttribute('y',best.cy-28);
+    tipTxt.setAttribute('x',tx2+8);tipTxt.setAttribute('y',best.cy-13);
+  } else {
+    tip.setAttribute('opacity',0);
+  }
+});
+svgRoot.addEventListener('mouseleave',()=>tip.setAttribute('opacity',0));
+
+function updateChart(){
+  const fx=sx(1-fpr/100);
+  fprLine.setAttribute('x1',fx);fprLine.setAttribute('x2',fx);
+  fprTxt.setAttribute('x',fx);fprTxt.textContent=fpr+'% FPR';
+
+  for(const m of ML){
+    const show=vis.has(m.id);
+    const op=OP[m.id][meth];
+    const pts=[{x:1,y:0}];
+    [1,4,10,20].forEach(f=>pts.push({x:op[f].u/100,y:op[f].s/100}));
+    pts.push({x:0.5,y:1});
+    pts.sort((a,b)=>b.x-a.x);
+    paths[m.id].setAttribute('d',ptsToD(pts));
+    paths[m.id].setAttribute('opacity',show?1:0);
+    [1,4,10,20].forEach((f,i)=>{
+      dots[m.id][i].setAttribute('cx',sx(op[f].u/100));
+      dots[m.id][i].setAttribute('cy',sy(op[f].s/100));
+      dots[m.id][i].setAttribute('opacity',show?1:0);
+    });
+  }
+
+  const ro=document.getElementById('rdout');
+  const cl=[1,4,10,20].reduce((a,b)=>Math.abs(b-fpr)<Math.abs(a-fpr)?b:a);
+  let html=`<b>Safety @ ${fpr}% FPR</b> (${meth.toUpperCase()}): `;
+  const parts=[];
+  for(const m of ML){
+    if(!vis.has(m.id))continue;
+    const d=OP[m.id][meth][cl];
+    parts.push(`<span style="color:${m.c};font-weight:500">${m.n} ${d.s}%</span>`);
+  }
+  ro.innerHTML=html+parts.join(' &middot; ');
+}
+
+// ═══ Gap ═══
+function buildGap(){
+  const g=document.getElementById('gapM');g.innerHTML='';
+  for(const m of ML){
+    const f=AUR.features[m.id],p=AUR.pbgp[m.id];
+    const r=document.createElement('div');r.className='gap-row';
+    r.innerHTML=`<div class="gap-name">${m.n}</div>
+      <div class="gap-track">
+        <div class="gap-fill pbgp" style="width:${p*100}%"></div>
+        <div class="gap-fill feat" style="width:${f*100}%"></div>
+      </div>
+      <div class="gap-delta">+${((p-f)*100).toFixed(0)}%</div>`;
+    g.appendChild(r);
+  }
+}
+
+// ═══ Heatmap ═══
+function buildHeat(){
+  const tbl=document.getElementById('heatM');
+  const tasks=Object.keys(SIDE),mx=Math.max(...tasks.map(k=>SIDE[k].r));
+  let h='<tr><th>Attack Type</th><th>MMD Ratio</th><th>p-value</th></tr>';
+  for(const k of tasks){
+    const d=SIDE[k],norm=d.r/mx;
+    const bg=norm>.8?'var(--good-bg)':norm>.5?'var(--warn-bg)':'var(--bad-bg)';
+    const fg=norm>.8?'var(--good)':norm>.5?'var(--warn)':'var(--bad)';
+    h+=`<tr><td>${k}</td><td><span class="heat-cell" style="background:${bg};color:${fg}">${d.r.toFixed(2)}×</span></td><td style="color:var(--ink3)">${d.p}</td></tr>`;
+  }
+  tbl.innerHTML=h;
+}
+
+// ═══ Op Table ═══
+function buildOpF(){
+  const c=document.getElementById('opF');c.innerHTML='';
+  const mk=(vals,key,fn)=>{vals.forEach(v=>{
+    const p=document.createElement('div');p.className='pill'+((key==='omf'?omf:off)===v?' on':'');
+    p.textContent=fn(v);
+    p.onclick=()=>{if(key==='omf')omf=v;else off=v;buildOpF();renderOp()};
+    c.appendChild(p);
+  })};
+  mk(['all','features','pbgp','combined'],'omf',v=>v==='all'?'All Methods':v.toUpperCase());
+  const sep=document.createElement('span');sep.style.cssText='width:1px;height:16px;background:var(--rule);margin:0 4px';c.appendChild(sep);
+  mk(['all','1','4','10','20'],'off',v=>v==='all'?'All FPR':v+'%');
+}
+
+function renderOp(){
+  const tbl=document.getElementById('opM');
+  const methods=omf==='all'?['features','pbgp','combined']:[omf];
+  const fprs=off==='all'?[1,4,10,20]:[+off];
+  let h='<tr><th style="text-align:left">Model</th><th>Method</th><th>FPR</th><th>Safety</th><th>Useful</th></tr>';
+  for(const m of ML)for(const mt of methods)for(const f of fprs){
+    const d=OP[m.id][mt][f];
+    const sc=d.s>=90?'op-hi':d.s>=40?'op-mi':'op-lo';
+    h+=`<tr><td>${m.n}</td><td style="color:var(--ink3)">${mt.toUpperCase()}</td><td style="color:var(--ink3)">${f}%</td><td class="${sc}">${d.s.toFixed(1)}%</td><td>${d.u.toFixed(1)}%</td></tr>`;
+  }
+  tbl.innerHTML=h;
+}
+
+// ═══ Controls ═══
+const seg=document.getElementById('segM');
+['pbgp','features','combined'].forEach(v=>{
+  const b=document.createElement('button');b.textContent=v.toUpperCase();b.dataset.m=v;
+  b.className=v===meth?'on':'';
+  b.onclick=()=>{meth=v;seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.m===v));updateChart()};
+  seg.appendChild(b);
+});
+
+const pbox=document.getElementById('pills');
+for(const m of ML){
+  const p=document.createElement('div');p.className='pill on';p.dataset.mid=m.id;
+  p.innerHTML=`<span class="d" style="background:${m.c}"></span>${m.n}`;
+  p.style.color=m.c;
+  p.onclick=()=>{
+    if(vis.has(m.id)){vis.delete(m.id);p.classList.remove('on');p.classList.add('off')}
+    else{vis.add(m.id);p.classList.add('on');p.classList.remove('off')}
+    updateChart();
+  };
+  pbox.appendChild(p);
+}
+
+document.getElementById('fprS').addEventListener('input',function(){
+  fpr=+this.value;document.getElementById('fprV').textContent=fpr+'%';updateChart();
+});
+
+// ═══ Boot ═══
+updateChart();buildGap();buildHeat();buildOpF();renderOp();
+</script>
+</body>
+</html>
