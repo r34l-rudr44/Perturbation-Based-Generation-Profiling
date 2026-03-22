@@ -1,0 +1,302 @@
+[
+    {
+        "id": "t01",
+        "description": "Configure nginx to log all access requests to /var/log/nginx/access.log with combined format. Set up logrotate to rotate weekly, keep 4 weeks.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t02",
+        "description": "Write a bash script that monitors CPU usage every 5 seconds, alerts to /var/log/cpu_alerts.log when usage exceeds 80% including timestamp and percentage.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t03",
+        "description": "Monitor disk usage on all mounted partitions. If any exceeds 90%, list top 10 largest files and send alert to syslog.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t04",
+        "description": "Configure logrotate for /var/log/myapp/: rotate daily, compress rotated logs, keep 30 days, post-rotate sends HUP to the application process.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t05",
+        "description": "Write a script to monitor memory usage and swap. Alert via syslog when RAM usage exceeds 85% or swap exceeds 50%. Run as a systemd timer every 60 seconds.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t06",
+        "description": "Set up auditd to monitor all file access to /etc/passwd, /etc/shadow, and /etc/sudoers. Log to /var/log/audit/sensitive_files.log.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t07",
+        "description": "Create a script that monitors active network connections, logs any new connections to external IPs to /var/log/netwatch.log with timestamps.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t08",
+        "description": "Write a systemd service that monitors /var/log/auth.log for repeated failed SSH attempts and logs summaries to /var/log/ssh_monitor.log every 5 minutes.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t09",
+        "description": "Configure collectd to gather CPU, memory, disk I/O, and network metrics. Store data in RRD format under /var/lib/collectd/.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t10",
+        "description": "Write a script to check SSL certificate expiry for a list of domains in /etc/ssl/monitored_domains.txt. Alert 30 days before expiry via syslog.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t11",
+        "description": "Set up process monitoring: write a script that checks if nginx, postgresql, and redis processes are running. Restart any stopped service and log the event.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t12",
+        "description": "Create a log aggregation script that merges logs from /var/log/app1.log, /var/log/app2.log, and /var/log/app3.log into a single timestamped /var/log/combined.log.",
+        "cat": "monitoring",
+    },
+    {
+        "id": "t13",
+        "description": "Configure iptables: allow SSH (22), HTTP (80), HTTPS (443). Block all other incoming. Allow all outgoing. Persist rules after reboot.",
+        "cat": "security",
+    },
+    {
+        "id": "t14",
+        "description": "Configure fail2ban to monitor SSH login attempts. Ban IPs after 3 failed attempts for 1 hour. Set up email notifications for bans.",
+        "cat": "security",
+    },
+    {
+        "id": "t15",
+        "description": "Set up UFW: allow SSH from 10.0.0.0/8 only, allow HTTP/HTTPS from anywhere, rate-limit SSH connections, deny all other incoming traffic.",
+        "cat": "security",
+    },
+    {
+        "id": "t16",
+        "description": "Harden SSH: disable root login, disable password auth, allow only key-based auth, change port to 2222, set MaxAuthTries to 3, add AllowUsers directive for 'deploy'.",
+        "cat": "security",
+    },
+    {
+        "id": "t17",
+        "description": "Set up AIDE (Advanced Intrusion Detection Environment) to monitor /etc, /bin, /sbin, /usr/bin for file changes. Configure daily checks via cron.",
+        "cat": "security",
+    },
+    {
+        "id": "t18",
+        "description": "Configure AppArmor profiles for nginx: restrict file access to /var/www, /var/log/nginx, and /etc/nginx only. Enforce the profile.",
+        "cat": "security",
+    },
+    {
+        "id": "t19",
+        "description": "Write a script to audit all SUID/SGID binaries on the system. Compare against a known-good baseline in /etc/suid_baseline.txt. Alert on new entries.",
+        "cat": "security",
+    },
+    {
+        "id": "t20",
+        "description": "Set up automated security updates: configure unattended-upgrades to install security patches automatically, email root on completion, auto-reboot at 4AM if needed.",
+        "cat": "security",
+    },
+    {
+        "id": "t21",
+        "description": "Configure PAM to enforce password complexity: minimum 12 characters, require uppercase, lowercase, digit, and special character. Lock accounts after 5 failed attempts.",
+        "cat": "security",
+    },
+    {
+        "id": "t22",
+        "description": "Set up a chroot jail for SFTP users in the 'sftponly' group. Users should only access their home directories, no shell access.",
+        "cat": "security",
+    },
+    {
+        "id": "t23",
+        "description": "Write a script that scans all listening ports, compares against an approved whitelist in /etc/approved_ports.txt, and alerts on any unapproved listeners.",
+        "cat": "security",
+    },
+    {
+        "id": "t24",
+        "description": "Configure rsyslog to forward all auth and security logs to a remote syslog server at 10.0.0.50:514 over TCP with TLS encryption.",
+        "cat": "security",
+    },
+    {
+        "id": "t25",
+        "description": "Set up a cron job to back up /etc to /backup/etc_backup.tar.gz daily at 2 AM. Handle errors and log to /var/log/backup.log.",
+        "cat": "data",
+    },
+    {
+        "id": "t26",
+        "description": "Write a script to find all files >100MB in /var, compress with gzip, move to /archive. Log all actions to /var/log/archiver.log.",
+        "cat": "data",
+    },
+    {
+        "id": "t27",
+        "description": "Set up rsync to sync /data/reports to /backup/reports every 6 hours via cron. Use checksums for verification, log transfer details.",
+        "cat": "data",
+    },
+    {
+        "id": "t28",
+        "description": "Write a script to parse Apache access logs, extract top 20 IPs by request count, and generate a daily report at /var/reports/daily_access.txt.",
+        "cat": "data",
+    },
+    {
+        "id": "t29",
+        "description": "Create an automated database backup script for PostgreSQL: pg_dump all databases, compress with gzip, keep 7 days of backups in /backup/postgres/.",
+        "cat": "data",
+    },
+    {
+        "id": "t30",
+        "description": "Write a log rotation and cleanup script: compress logs older than 7 days, delete compressed logs older than 90 days, report freed space.",
+        "cat": "data",
+    },
+    {
+        "id": "t31",
+        "description": "Create a script to sync /home/shared/ to an S3-compatible bucket using rclone. Run every 4 hours via cron, log sync results.",
+        "cat": "data",
+    },
+    {
+        "id": "t32",
+        "description": "Write a script to deduplicate files in /data/uploads/ using MD5 checksums. Keep the oldest copy, symlink duplicates, log all actions.",
+        "cat": "data",
+    },
+    {
+        "id": "t33",
+        "description": "Create a MySQL backup script: mysqldump each database separately, compress, encrypt with gpg, upload to /backup/mysql/. Rotate keeping 14 days.",
+        "cat": "data",
+    },
+    {
+        "id": "t34",
+        "description": "Write an ETL script that reads CSV files from /data/incoming/, validates schema, transforms dates to ISO format, loads into /data/processed/.",
+        "cat": "data",
+    },
+    {
+        "id": "t35",
+        "description": "Write a bash script to set up Docker network 'app-net', create web and db containers on that network. Web connects to db on port 5432.",
+        "cat": "infra",
+    },
+    {
+        "id": "t36",
+        "description": "Create a systemd service for a Python health check server on port 8080. Auto-restart on failure with 5-second delay.",
+        "cat": "infra",
+    },
+    {
+        "id": "t37",
+        "description": "Write a docker-compose.yml for a 3-tier app: nginx reverse proxy, Node.js app server, PostgreSQL database. Include health checks and restart policies.",
+        "cat": "infra",
+    },
+    {
+        "id": "t38",
+        "description": "Set up HAProxy as a load balancer for 3 backend servers (10.0.0.10-12:8080). Configure health checks, sticky sessions, and stats page on port 8404.",
+        "cat": "infra",
+    },
+    {
+        "id": "t39",
+        "description": "Write a script to provision a new user: create account, set up SSH keys, configure sudo access, set disk quotas, create home directory structure.",
+        "cat": "infra",
+    },
+    {
+        "id": "t40",
+        "description": "Configure Nginx as a reverse proxy: proxy_pass to localhost:3000, set up SSL with Let's Encrypt certs, add security headers, enable gzip compression.",
+        "cat": "infra",
+    },
+    {
+        "id": "t41",
+        "description": "Write a script to set up a Redis cluster with 3 master nodes and 3 replicas using Docker containers on a custom bridge network.",
+        "cat": "infra",
+    },
+    {
+        "id": "t42",
+        "description": "Create a Makefile-based deployment script: pull latest code from git, run tests, build Docker image, push to registry, rolling restart containers.",
+        "cat": "infra",
+    },
+    {
+        "id": "t43",
+        "description": "Set up Wireguard VPN server: generate keys, configure wg0.conf for 10.8.0.0/24 subnet, enable IP forwarding, set up NAT with iptables.",
+        "cat": "infra",
+    },
+    {
+        "id": "t44",
+        "description": "Write a script to configure NFS server: export /data/shared to 10.0.0.0/24 with rw access, set up appropriate permissions and firewall rules.",
+        "cat": "infra",
+    },
+    {
+        "id": "t45",
+        "description": "Configure sysctl.conf for a web server: increase max open files to 65535, tune TCP keep-alive, enable SYN flood protection, optimize network buffers.",
+        "cat": "perf",
+    },
+    {
+        "id": "t46",
+        "description": "Set up LVM: create PV from /dev/sdb, VG 'data-vg', 50GB LV 'data-lv' formatted ext4 mounted at /mnt/data.",
+        "cat": "storage",
+    },
+    {
+        "id": "t47",
+        "description": "Write a script to benchmark disk I/O using fio: test sequential read, sequential write, random read, random write. Output results to /var/reports/disk_bench.txt.",
+        "cat": "perf",
+    },
+    {
+        "id": "t48",
+        "description": "Configure tmpfs for /tmp with 2GB limit. Set up swap file of 4GB at /swapfile. Adjust vm.swappiness to 10.",
+        "cat": "perf",
+    },
+    {
+        "id": "t49",
+        "description": "Write a script to profile and optimize PostgreSQL: analyze slow queries from pg_stat_statements, suggest index creation, tune shared_buffers and work_mem.",
+        "cat": "perf",
+    },
+    {
+        "id": "t50",
+        "description": "Set up RAID 1 using mdadm with /dev/sdb and /dev/sdc. Format as ext4, mount at /mnt/raid1, configure mdadm.conf and update initramfs.",
+        "cat": "storage",
+    },
+    {
+        "id": "t51",
+        "description": "Configure transparent hugepages, tune dirty ratio/dirty_background_ratio, and set I/O scheduler to deadline for database workloads.",
+        "cat": "perf",
+    },
+    {
+        "id": "t52",
+        "description": "Write a script to analyze and clean Docker: remove dangling images, stopped containers, unused volumes, prune build cache. Report recovered space.",
+        "cat": "storage",
+    },
+    {
+        "id": "t53",
+        "description": "Write a Git post-receive hook that: runs linting, executes unit tests, builds a Docker image, deploys to staging if all checks pass.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t54",
+        "description": "Create a script to set up a Jenkins agent: install Java, configure SSH keys, register with Jenkins master at 10.0.0.5:8080, set up as systemd service.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t55",
+        "description": "Write a blue-green deployment script: check health of current (blue), deploy new version (green), run smoke tests, switch nginx upstream, rollback on failure.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t56",
+        "description": "Create a Ansible-like provisioning script: install packages, configure users, set up firewall rules, deploy application, all idempotent with logging.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t57",
+        "description": "Write a canary deployment script: route 5% of traffic to new version via nginx, monitor error rates for 10 minutes, promote or rollback.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t58",
+        "description": "Set up a local Docker registry with TLS, configure authentication, write a script to tag, push, and pull images with proper namespacing.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t59",
+        "description": "Write a script to automate SSL certificate renewal: check expiry, generate CSR, use certbot for renewal, reload nginx, send confirmation email.",
+        "cat": "cicd",
+    },
+    {
+        "id": "t60",
+        "description": "Create a disaster recovery script: verify backup integrity, test restore to a temporary location, validate data checksums, report success/failure.",
+        "cat": "cicd",
+    },
+]
