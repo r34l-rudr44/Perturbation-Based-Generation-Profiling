@@ -47,9 +47,11 @@ If you find this work useful in your research, please consider citing it:
 
 ```
 @misc{
-  title={Perturbation-Based Generation Profiling Detects Covert AI Agent Attacks Where Token-Level Statistics Fail},
-  author={Maheshwari, Yatharth and Dash, Arka and Som, Abhineet},
-  year={2026},
-  note={AI Control Hackathon}
+  title={(HckPrj) Perturbation-Based Generation Profiling Detects Covert AI Agent Attacks Where Token-Level Statistics Fail},
+  author={Yatharth Maheshwari, Arka Dash, Abhineet Som},
+  date={3/22/26},
+  organization={Apart Research},
+  note={Research submission to the research sprint hosted by Apart.},
+  howpublished={https://apartresearch.com}
 }
 ```
