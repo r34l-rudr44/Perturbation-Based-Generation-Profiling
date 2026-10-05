@@ -5,3 +5,4 @@ __pycache__/
 # Recorded-context scoring needs explicit external-transfer approval.
 pbgp-pilot/recorded_pilot/
 pbgp-pilot/sample_audit/cases.json
+pbgp-pilot/session_context/

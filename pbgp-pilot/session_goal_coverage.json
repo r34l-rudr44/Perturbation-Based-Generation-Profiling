@@ -1,0 +1,26 @@
+{
+  "source": "https://huggingface.co/buckets/r34lrudraa/ai-village-bucket",
+  "source_file": "computer_use_sessions.jsonl.gz",
+  "source_sha256": "112fd64de3df500f95d68057afc8f62a1dee5cdc6a905092935d29cba7aa8570",
+  "source_rows": 78362,
+  "source_fields": [
+    "agent_id",
+    "created_at",
+    "has_been_asked_to_stop",
+    "id",
+    "session_goal",
+    "short_displayed_session_goal",
+    "updated_at",
+    "village_id"
+  ],
+  "sample_turns": 577,
+  "sample_sessions": 16,
+  "matched_sessions": 16,
+  "matched_sessions_with_goal": 16,
+  "missing_session_ids": [],
+  "limitations": [
+    "Recorded session intent is not a complete trusted instruction hierarchy.",
+    "No session metadata was sent to an external scoring provider.",
+    "Raw matched session records remain local and ignored by Git."
+  ]
+}
