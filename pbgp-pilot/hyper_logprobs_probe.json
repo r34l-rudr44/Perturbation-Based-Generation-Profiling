@@ -1,0 +1,107 @@
+[
+  {
+    "status": "success",
+    "usage": {
+      "prompt_tokens": 32,
+      "completion_tokens": 1,
+      "total_tokens": 33,
+      "cost": {
+        "usd": 0.0001,
+        "hypercredits": 0.002
+      },
+      "remaining": {
+        "hypercredits": 99.998
+      }
+    },
+    "model": "qwen3.8-flash",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "hello"
+      },
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "status": "success",
+    "usage": {
+      "prompt_tokens": 19,
+      "completion_tokens": 2,
+      "total_tokens": 21,
+      "cost": {
+        "usd": 0.0001,
+        "hypercredits": 0.002
+      },
+      "remaining": {
+        "hypercredits": 99.99599999999998
+      }
+    },
+    "model": "qwen3.8-27b",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "hello",
+        "reasoning_content": ""
+      },
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "status": "success",
+    "usage": {
+      "prompt_tokens": 11,
+      "completion_tokens": 24,
+      "total_tokens": 35,
+      "completion_tokens_details": {
+        "reasoning_tokens": 21
+      },
+      "cost": {
+        "usd": 0.0001,
+        "hypercredits": 0.002
+      },
+      "remaining": {
+        "hypercredits": 99.99399999999999
+      }
+    },
+    "model": "deepseek-v4-flash",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "hello",
+        "reasoning_content": "We are asked to reply with exactly one word: hello. So the response should be just \"hello\"."
+      },
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "status": "success",
+    "usage": {
+      "prompt_tokens": 15,
+      "completion_tokens": 32,
+      "total_tokens": 47,
+      "completion_tokens_details": {
+        "reasoning_tokens": 31
+      },
+      "cost": {
+        "usd": 0.0001548818,
+        "hypercredits": 0.003097636
+      },
+      "remaining": {
+        "hypercredits": 99.99199999999999
+      }
+    },
+    "model": "kimi-k2.7-code",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "hello",
+        "reasoning_content": "The user wants me to reply with exactly one word: \"hello\". I should output just that single word without any additional text, punctuation, or explanation."
+      },
+      "finish_reason": "stop"
+    }
+  }
+]

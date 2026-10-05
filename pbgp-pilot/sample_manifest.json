@@ -1,0 +1,28 @@
+{
+  "source": "C:\\Users\\nevrohelios\\Downloads\\New folder (7)\\computer_use_turns.jsonl\\computer_use_turns.jsonl",
+  "source_bytes": 8320640815,
+  "source_rows": 2510487,
+  "seed": 20261006,
+  "sessions": {
+    "1a45af08-01c4-4a1b-8a79-02a6b0cd9bf7": 41,
+    "2218a15e-5ac6-4e3d-a50d-aa9e56ddccde": 41,
+    "4759c6be-694b-4455-ac1b-d7e5cc7d4786": 32,
+    "51c3203f-ccad-4c7e-8584-8166d3231db0": 19,
+    "8f990f83-a500-47c1-8598-9056549bad45": 41,
+    "94356269-91ab-425d-abca-8679f84749c5": 38,
+    "9f001bfa-1731-42de-9534-10d3359513aa": 41,
+    "a84bd7a8-949b-4116-806c-eb1bfdc10612": 19,
+    "a862a213-a227-47d0-b0e8-d3adb0d3e09f": 41,
+    "ac7aaba9-cf51-46b2-93fb-504466368b25": 18,
+    "c1084247-8feb-467a-8b20-fe7bc8437f7d": 41,
+    "c53f5705-2540-4bfa-9540-90bf227dde1c": 41,
+    "d4470260-9040-4ddb-8033-23cd1bf5de10": 41,
+    "d6d0db8e-a2aa-4df2-acfd-38809c77dfac": 41,
+    "d8859a62-d3c8-4b09-94e0-8a9025dab9e2": 41,
+    "e086dd71-9f7d-48a3-8ae7-0a29d59292e1": 41
+  },
+  "sample_rows": 577,
+  "sample_bytes": 2160290,
+  "sampling": "16 random byte offsets select seed rows; recover all rows belonging to those sessions. Length-biased exploratory sample, not uniform by session.",
+  "limitations": "No attack labels. All available turns preserved, but session goals, original prompts, and screenshots may require other dataset tables."
+}

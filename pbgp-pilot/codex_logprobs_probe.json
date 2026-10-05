@@ -1,0 +1,12 @@
+[
+  {
+    "test": "logprobs",
+    "status": 400,
+    "error": "{\"detail\":\"Unsupported parameter: top_logprobs\"}"
+  },
+  {
+    "test": "include_only",
+    "status": 400,
+    "error": "{\n  \"error\": {\n    \"message\": \"logprobs are not supported with reasoning models.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"include\",\n    \"code\": \"unsupported_parameter\"\n  }\n}"
+  }
+]

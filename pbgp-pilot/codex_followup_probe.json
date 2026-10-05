@@ -1,0 +1,1819 @@
+[
+  {
+    "test": "luna_top5",
+    "status": 400,
+    "error": "{\"detail\":\"Unsupported parameter: top_logprobs\"}"
+  },
+  {
+    "test": "luna_sentence",
+    "status": 200,
+    "events": [
+      {
+        "type": "response.created",
+        "response": {
+          "id": "resp_0cc8b6fa8a46e999016ac3f0d5475087d083ee1e5edc396f50",
+          "object": "response",
+          "created_at": 1791226069,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f4db9c0b-0d28-4cf8-9bb3-d540fbad27af",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 0
+      },
+      {
+        "type": "response.in_progress",
+        "response": {
+          "id": "resp_0cc8b6fa8a46e999016ac3f0d5475087d083ee1e5edc396f50",
+          "object": "response",
+          "created_at": 1791226069,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f4db9c0b-0d28-4cf8-9bb3-d540fbad27af",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 1
+      },
+      {
+        "type": "response.output_item.added",
+        "item": {
+          "id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+          "type": "message",
+          "status": "in_progress",
+          "content": [],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 2
+      },
+      {
+        "type": "response.content_part.added",
+        "content_index": 0,
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": ""
+        },
+        "sequence_number": 3
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": "Rain",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              82,
+              97,
+              105,
+              110
+            ],
+            "logprob": -0.00231170654296875,
+            "token": "Rain",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "Ll95V0zzWh9h",
+        "output_index": 0,
+        "sequence_number": 4
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": " taps",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              32,
+              116,
+              97,
+              112,
+              115
+            ],
+            "logprob": -0.24071121215820312,
+            "token": " taps",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "CEvtSf1n41m",
+        "output_index": 0,
+        "sequence_number": 5
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": " softly",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              32,
+              115,
+              111,
+              102,
+              116,
+              108,
+              121
+            ],
+            "logprob": -0.09406661987304688,
+            "token": " softly",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "hhq2bS0uJ",
+        "output_index": 0,
+        "sequence_number": 6
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": " on",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              32,
+              111,
+              110
+            ],
+            "logprob": -0.2648963928222656,
+            "token": " on",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "0FWPWw8iajgXW",
+        "output_index": 0,
+        "sequence_number": 7
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": " the",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              32,
+              116,
+              104,
+              101
+            ],
+            "logprob": -0.000247955322265625,
+            "token": " the",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "orFJiG7OtSYM",
+        "output_index": 0,
+        "sequence_number": 8
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": " roof",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              32,
+              114,
+              111,
+              111,
+              102
+            ],
+            "logprob": -1.7468414306640625,
+            "token": " roof",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "oQ01fywFzht",
+        "output_index": 0,
+        "sequence_number": 9
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": ".",
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              46
+            ],
+            "logprob": -9.1552734375e-05,
+            "token": ".",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "E8cIpgfdLoUXEvK",
+        "output_index": 0,
+        "sequence_number": 10
+      },
+      {
+        "type": "response.output_text.done",
+        "content_index": 0,
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "logprobs": [
+          {
+            "bytes": [
+              82,
+              97,
+              105,
+              110
+            ],
+            "logprob": -0.00231170654296875,
+            "token": "Rain",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              32,
+              116,
+              97,
+              112,
+              115
+            ],
+            "logprob": -0.24071121215820312,
+            "token": " taps",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              32,
+              115,
+              111,
+              102,
+              116,
+              108,
+              121
+            ],
+            "logprob": -0.09406661987304688,
+            "token": " softly",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              32,
+              111,
+              110
+            ],
+            "logprob": -0.2648963928222656,
+            "token": " on",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              32,
+              116,
+              104,
+              101
+            ],
+            "logprob": -0.000247955322265625,
+            "token": " the",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              32,
+              114,
+              111,
+              111,
+              102
+            ],
+            "logprob": -1.7468414306640625,
+            "token": " roof",
+            "top_logprobs": []
+          },
+          {
+            "bytes": [
+              46
+            ],
+            "logprob": -9.1552734375e-05,
+            "token": ".",
+            "top_logprobs": []
+          }
+        ],
+        "output_index": 0,
+        "sequence_number": 11,
+        "text": "Rain taps softly on the roof."
+      },
+      {
+        "type": "response.content_part.done",
+        "content_index": 0,
+        "item_id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "Rain taps softly on the roof."
+        },
+        "sequence_number": 12
+      },
+      {
+        "type": "response.output_item.done",
+        "item": {
+          "id": "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1",
+          "type": "message",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "annotations": [],
+              "logprobs": [
+                {
+                  "bytes": [
+                    82,
+                    97,
+                    105,
+                    110
+                  ],
+                  "logprob": -0.002312,
+                  "token": "Rain",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    32,
+                    116,
+                    97,
+                    112,
+                    115
+                  ],
+                  "logprob": -0.240711,
+                  "token": " taps",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    32,
+                    115,
+                    111,
+                    102,
+                    116,
+                    108,
+                    121
+                  ],
+                  "logprob": -0.094067,
+                  "token": " softly",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    32,
+                    111,
+                    110
+                  ],
+                  "logprob": -0.264896,
+                  "token": " on",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    32,
+                    116,
+                    104,
+                    101
+                  ],
+                  "logprob": -0.000248,
+                  "token": " the",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    32,
+                    114,
+                    111,
+                    111,
+                    102
+                  ],
+                  "logprob": -1.746841,
+                  "token": " roof",
+                  "top_logprobs": []
+                },
+                {
+                  "bytes": [
+                    46
+                  ],
+                  "logprob": -9.2e-05,
+                  "token": ".",
+                  "top_logprobs": []
+                }
+              ],
+              "text": "Rain taps softly on the roof."
+            }
+          ],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 13
+      },
+      {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_0cc8b6fa8a46e999016ac3f0d5475087d083ee1e5edc396f50",
+          "object": "response",
+          "created_at": 1791226069,
+          "status": "completed",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": 1791226070,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f4db9c0b-0d28-4cf8-9bb3-d540fbad27af",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "default",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": {
+            "attribution": {
+              "items": {
+                "msg_0cc8b6fa8a46e999016ac3f0d554dc87d08df4b6403ca1f783": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 11,
+                      "output_tokens": 0
+                    }
+                  ],
+                  "input_tokens": 11,
+                  "output_tokens": 0
+                },
+                "msg_0cc8b6fa8a46e999016ac3f0d6459487d0849595f342ec4df1": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 2,
+                      "output_tokens": 11
+                    }
+                  ],
+                  "input_tokens": 2,
+                  "output_tokens": 11
+                }
+              },
+              "request_fields": {
+                "instructions": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "input_tokens": 7,
+                  "output_tokens": 0
+                }
+              }
+            },
+            "input_tokens": 20,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 11,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 31
+          },
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 14
+      }
+    ]
+  },
+  {
+    "test": "sol_none",
+    "status": 200,
+    "events": [
+      {
+        "type": "response.created",
+        "response": {
+          "id": "resp_0668802de716b76d016ac3f0d71ecc87d0b58c30dd011093c2",
+          "object": "response",
+          "created_at": 1791226071,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-sol",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "2fad71b9-fb81-40e2-81a8-b28ea82584d5",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 0
+      },
+      {
+        "type": "response.in_progress",
+        "response": {
+          "id": "resp_0668802de716b76d016ac3f0d71ecc87d0b58c30dd011093c2",
+          "object": "response",
+          "created_at": 1791226071,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-sol",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "2fad71b9-fb81-40e2-81a8-b28ea82584d5",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 1
+      },
+      {
+        "type": "response.output_item.added",
+        "item": {
+          "id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+          "type": "message",
+          "status": "in_progress",
+          "content": [],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 2
+      },
+      {
+        "type": "response.content_part.added",
+        "content_index": 0,
+        "item_id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": ""
+        },
+        "sequence_number": 3
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": "hello",
+        "item_id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": -7.62939453125e-06,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "yx19UprKWsW",
+        "output_index": 0,
+        "sequence_number": 4
+      },
+      {
+        "type": "response.output_text.done",
+        "content_index": 0,
+        "item_id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": -7.62939453125e-06,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "output_index": 0,
+        "sequence_number": 5,
+        "text": "hello"
+      },
+      {
+        "type": "response.content_part.done",
+        "content_index": 0,
+        "item_id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "hello"
+        },
+        "sequence_number": 6
+      },
+      {
+        "type": "response.output_item.done",
+        "item": {
+          "id": "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d",
+          "type": "message",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "annotations": [],
+              "logprobs": [
+                {
+                  "bytes": [
+                    104,
+                    101,
+                    108,
+                    108,
+                    111
+                  ],
+                  "logprob": -8e-06,
+                  "token": "hello",
+                  "top_logprobs": []
+                }
+              ],
+              "text": "hello"
+            }
+          ],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 7
+      },
+      {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_0668802de716b76d016ac3f0d71ecc87d0b58c30dd011093c2",
+          "object": "response",
+          "created_at": 1791226071,
+          "status": "completed",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": 1791226072,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-6-sol",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "2fad71b9-fb81-40e2-81a8-b28ea82584d5",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "default",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": {
+            "attribution": {
+              "items": {
+                "msg_0668802de716b76d016ac3f0d72b1887d08a908797b7b3cdc3": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 9,
+                      "output_tokens": 0
+                    }
+                  ],
+                  "input_tokens": 9,
+                  "output_tokens": 0
+                },
+                "msg_0668802de716b76d016ac3f0d8716887d0b98676e29b77991d": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 2,
+                      "output_tokens": 5
+                    }
+                  ],
+                  "input_tokens": 2,
+                  "output_tokens": 5
+                }
+              },
+              "request_fields": {
+                "instructions": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "input_tokens": 7,
+                  "output_tokens": 0
+                }
+              }
+            },
+            "input_tokens": 18,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 5,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 23
+          },
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 8
+      }
+    ]
+  },
+  {
+    "test": "terra_none",
+    "status": 200,
+    "events": [
+      {
+        "type": "response.created",
+        "response": {
+          "id": "resp_00163d715d0b5cba016ac3f0d95f8487d08a8a6d9c97eaf223",
+          "object": "response",
+          "created_at": 1791226073,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-terra",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "3c65a2b3-bb35-4fe1-bea8-3cb243a878ee",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 0
+      },
+      {
+        "type": "response.in_progress",
+        "response": {
+          "id": "resp_00163d715d0b5cba016ac3f0d95f8487d08a8a6d9c97eaf223",
+          "object": "response",
+          "created_at": 1791226073,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-terra",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "3c65a2b3-bb35-4fe1-bea8-3cb243a878ee",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 1
+      },
+      {
+        "type": "response.output_item.added",
+        "item": {
+          "id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+          "type": "message",
+          "status": "in_progress",
+          "content": [],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 2
+      },
+      {
+        "type": "response.content_part.added",
+        "content_index": 0,
+        "item_id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": ""
+        },
+        "sequence_number": 3
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": "hello",
+        "item_id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": 6.866455078125e-05,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "htpHpDT5emv",
+        "output_index": 0,
+        "sequence_number": 4
+      },
+      {
+        "type": "response.output_text.done",
+        "content_index": 0,
+        "item_id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": 6.866455078125e-05,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "output_index": 0,
+        "sequence_number": 5,
+        "text": "hello"
+      },
+      {
+        "type": "response.content_part.done",
+        "content_index": 0,
+        "item_id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "hello"
+        },
+        "sequence_number": 6
+      },
+      {
+        "type": "response.output_item.done",
+        "item": {
+          "id": "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b",
+          "type": "message",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "annotations": [],
+              "logprobs": [
+                {
+                  "bytes": [
+                    104,
+                    101,
+                    108,
+                    108,
+                    111
+                  ],
+                  "logprob": 6.9e-05,
+                  "token": "hello",
+                  "top_logprobs": []
+                }
+              ],
+              "text": "hello"
+            }
+          ],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 7
+      },
+      {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_00163d715d0b5cba016ac3f0d95f8487d08a8a6d9c97eaf223",
+          "object": "response",
+          "created_at": 1791226073,
+          "status": "completed",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": 1791226075,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-terra",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "3c65a2b3-bb35-4fe1-bea8-3cb243a878ee",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "default",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": {
+            "attribution": {
+              "items": {
+                "msg_00163d715d0b5cba016ac3f0d9763c87d0a990a9d564b84390": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 9,
+                      "output_tokens": 0
+                    }
+                  ],
+                  "input_tokens": 9,
+                  "output_tokens": 0
+                },
+                "msg_00163d715d0b5cba016ac3f0daf9c887d0b08d196ee282e08b": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 2,
+                      "output_tokens": 5
+                    }
+                  ],
+                  "input_tokens": 2,
+                  "output_tokens": 5
+                }
+              },
+              "request_fields": {
+                "instructions": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "input_tokens": 7,
+                  "output_tokens": 0
+                }
+              }
+            },
+            "input_tokens": 18,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 5,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 23
+          },
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 8
+      }
+    ]
+  },
+  {
+    "test": "luna56_none",
+    "status": 200,
+    "events": [
+      {
+        "type": "response.created",
+        "response": {
+          "id": "resp_059f909bfbbc7d9c016ac3f0dc0c5087d0876538235140c6b6",
+          "object": "response",
+          "created_at": 1791226076,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f38a1518-29c7-4ebc-996f-454d43766eec",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 0
+      },
+      {
+        "type": "response.in_progress",
+        "response": {
+          "id": "resp_059f909bfbbc7d9c016ac3f0dc0c5087d0876538235140c6b6",
+          "object": "response",
+          "created_at": 1791226076,
+          "status": "in_progress",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": null,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f38a1518-29c7-4ebc-996f-454d43766eec",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "auto",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": null,
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 1
+      },
+      {
+        "type": "response.output_item.added",
+        "item": {
+          "id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+          "type": "message",
+          "status": "in_progress",
+          "content": [],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 2
+      },
+      {
+        "type": "response.content_part.added",
+        "content_index": 0,
+        "item_id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": ""
+        },
+        "sequence_number": 3
+      },
+      {
+        "type": "response.output_text.delta",
+        "content_index": 0,
+        "delta": "hello",
+        "item_id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": -3.814697265625e-06,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "obfuscation": "p7Zq85f0QoL",
+        "output_index": 0,
+        "sequence_number": 4
+      },
+      {
+        "type": "response.output_text.done",
+        "content_index": 0,
+        "item_id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+        "logprobs": [
+          {
+            "bytes": [
+              104,
+              101,
+              108,
+              108,
+              111
+            ],
+            "logprob": -3.814697265625e-06,
+            "token": "hello",
+            "top_logprobs": []
+          }
+        ],
+        "output_index": 0,
+        "sequence_number": 5,
+        "text": "hello"
+      },
+      {
+        "type": "response.content_part.done",
+        "content_index": 0,
+        "item_id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+        "output_index": 0,
+        "part": {
+          "type": "output_text",
+          "annotations": [],
+          "logprobs": [],
+          "text": "hello"
+        },
+        "sequence_number": 6
+      },
+      {
+        "type": "response.output_item.done",
+        "item": {
+          "id": "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b",
+          "type": "message",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "annotations": [],
+              "logprobs": [
+                {
+                  "bytes": [
+                    104,
+                    101,
+                    108,
+                    108,
+                    111
+                  ],
+                  "logprob": -4e-06,
+                  "token": "hello",
+                  "top_logprobs": []
+                }
+              ],
+              "text": "hello"
+            }
+          ],
+          "phase": "final_answer",
+          "role": "assistant"
+        },
+        "output_index": 0,
+        "sequence_number": 7
+      },
+      {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_059f909bfbbc7d9c016ac3f0dc0c5087d0876538235140c6b6",
+          "object": "response",
+          "created_at": 1791226076,
+          "status": "completed",
+          "access_programs": {
+            "cyber": "daybreak_blue"
+          },
+          "background": false,
+          "completed_at": 1791226077,
+          "error": null,
+          "frequency_penalty": 0.0,
+          "incomplete_details": null,
+          "instructions": "Reply briefly.",
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-5.6-luna",
+          "moderation": null,
+          "output": [],
+          "parallel_tool_calls": true,
+          "presence_penalty": 0.0,
+          "previous_response_id": null,
+          "prompt_cache_key": "f38a1518-29c7-4ebc-996f-454d43766eec",
+          "prompt_cache_retention": "24h",
+          "reasoning": {
+            "context": "all_turns",
+            "effort": "none",
+            "mode": "standard",
+            "summary": null
+          },
+          "safety_identifier": "user-wYOrab3IBDina87AxhMAH1on",
+          "service_tier": "default",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tool_usage": {
+            "image_gen": {
+              "input_tokens": 0,
+              "input_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "output_tokens": 0,
+              "output_tokens_details": {
+                "image_tokens": 0,
+                "text_tokens": 0
+              },
+              "total_tokens": 0
+            },
+            "web_search": {
+              "num_requests": 0
+            }
+          },
+          "tools": [],
+          "top_logprobs": 0,
+          "top_p": 0.98,
+          "truncation": "disabled",
+          "usage": {
+            "attribution": {
+              "items": {
+                "msg_059f909bfbbc7d9c016ac3f0dc14c887d08493579573957dd6": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 9,
+                      "output_tokens": 0
+                    }
+                  ],
+                  "input_tokens": 9,
+                  "output_tokens": 0
+                },
+                "msg_059f909bfbbc7d9c016ac3f0dcf0a087d0ab155cb93dcfb96b": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "content": [
+                    {
+                      "cache_write_tokens": 0,
+                      "cached_tokens": 0,
+                      "input_tokens": 2,
+                      "output_tokens": 5
+                    }
+                  ],
+                  "input_tokens": 2,
+                  "output_tokens": 5
+                }
+              },
+              "request_fields": {
+                "instructions": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0,
+                  "input_tokens": 7,
+                  "output_tokens": 0
+                }
+              }
+            },
+            "input_tokens": 18,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 5,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 23
+          },
+          "user": null,
+          "metadata": {}
+        },
+        "sequence_number": 8
+      }
+    ]
+  }
+]

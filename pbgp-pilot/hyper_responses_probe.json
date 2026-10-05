@@ -1,0 +1,28 @@
+{
+  "id": "resp_b1cb14280a3c9c2d388d36a6",
+  "object": "response",
+  "created_at": 1791225770,
+  "model": "qwen3.8-flash",
+  "status": "completed",
+  "output": [
+    {
+      "type": "message",
+      "id": "msg_5d3857471af156635233c45c",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "hello"
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "input_tokens": 32,
+    "output_tokens": 1,
+    "total_tokens": 33
+  },
+  "parallel_tool_calls": false,
+  "tools": []
+}
