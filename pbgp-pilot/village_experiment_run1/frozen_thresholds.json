@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-10-05T21:51:55.757638+00:00",
+  "target_fpr": 0.05,
+  "thresholds": {
+    "pbgp_w1": 1.078481098600605,
+    "original_nll": 0.4535532418036989,
+    "action_tokens": 13
+  },
+  "calibration_values_sha256": "6db896cf7c6923b4313abc0d8dee8b9613afc90ace19fabef707ffc5a89008cb",
+  "test_case_rows_already_saved": 0,
+  "test_scores_used": false
+}

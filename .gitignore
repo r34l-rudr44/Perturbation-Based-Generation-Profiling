@@ -6,3 +6,4 @@ __pycache__/
 pbgp-pilot/recorded_pilot/
 pbgp-pilot/sample_audit/cases.json
 pbgp-pilot/session_context/
+pbgp-pilot/village_experiment_private/
