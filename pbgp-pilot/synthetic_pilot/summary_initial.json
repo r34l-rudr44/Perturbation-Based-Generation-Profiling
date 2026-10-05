@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-10-05T19:47:57.696848+00:00",
+  "model": "turboderp/Qwen3.8-27B-exl3",
+  "case_count": 18,
+  "valid_cases": 16,
+  "rejected_cases": 2,
+  "primary_score": "Wasserstein distance of fixed-action logprobs after removing peer message",
+  "interpretation": "Synthetic reduced-profile proxy. No historical detection or prevention claim; no calibrated FPR.",
+  "auroc_peer_removal": 0.7818181818181819,
+  "auroc_original_nll_baseline": 0.41818181818181815,
+  "max_repeat_wasserstein": 0.18837706417171932
+}

@@ -1,2 +1,7 @@
 computer_use_turns.jsonl
 omniroute-context/
+__pycache__/
+*.pyc
+# Recorded-context scoring needs explicit external-transfer approval.
+pbgp-pilot/recorded_pilot/
+pbgp-pilot/sample_audit/cases.json

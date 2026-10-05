@@ -31,9 +31,9 @@ The supplied export contains collapsed summaries of some earlier messages and to
 | Hypercharm Responses probe | Previous conversation reports Qwen omitted probabilities with the logprobs include option. Saved artifact: `pbgp-pilot/hyper_responses_probe.json`. No live retest in this chat. |
 | Codex probes | Saved files include initial, reasoning-variant, and follow-up probes. Previous conversation reports generated-token logprobs for GPT-6 Luna, GPT-6 Sol, GPT-5.6 Luna, and GPT-5.6 Terra with reasoning effort `none`. Saved follow-up file explicitly records HTTP 400 for `top_logprobs` and a successful Luna sentence response. No live retest in this chat. |
 | Probe portability | `probe_codex.py` and `probe_codex_followup.py` hard-code an earlier user's `C:/Users/nevrohelios/.codex/auth.json` path and call a Codex backend endpoint. Their presence does not establish portability or a supported public API contract. Do not assume they run unchanged on this machine. |
-| PBGP implementation | `pbgp-context` is a Gitlink at `7b2d5d78844843ebd23405a563cd56d0ba3741b1`, with an empty directory after cloning. There is no tracked `.gitmodules` configuration. The implementation is therefore not available in a normal clone. The export identifies the same repository's older `main` and `gh-pages` branches as method sources. |
+| PBGP implementation | Restored `pbgp-context` at the already-pinned `main` commit `7b2d5d78844843ebd23405a563cd56d0ba3741b1`. Added the missing `.gitmodules` configuration. Use `git submodule update --init pbgp-context` or a recursive clone to obtain it. Earlier observations of an empty directory describe the initial checkout. |
 | OmniRoute | Earlier chat inspected provider catalogs and no-auth routes; comprehensive live provider/model testing remains unfinished. `omniroute-context/` is ignored and absent here. |
-| Detection experiment | No completed PBGP scoring run, labeled evaluation, or prevention result is established by this repository. |
+| Detection experiment | Completed a reduced-profile synthetic pilot: 18 cases / 6 task families, peer-removal Wasserstein AUROC 0.819, original-action mean-NLL baseline 0.458. This is exploratory proxy evidence, not reproduction of full PBGP or historical prevention. Report: `pbgp-pilot/pilot_report.md`. Two recorded tool errors are extracted locally; remote replay scoring awaits explicit transfer approval. |
 
 ## Decisions and reasons
 
@@ -570,3 +570,98 @@ A defensible test would compare pre-action continuations with and without the un
 > - Created and pushed `log.md` to `master`: supplied conversation, this chat, decision summaries, progress, and open questions. The API key is redacted.
 > - Resumed testing: UncloseAI returned generated-token logprobs, top-five alternatives, and input-token scoring. Probe and results are saved.
 > - Next: validate scoring under perturbations, then build the labeled PBGP pilot.
+
+## Continuation, synthetic pilot, and real-case inspection — 2026-10-06
+
+### User and assistant exchanges (in order)
+
+**User:**
+
+> cool, proceed, lmk where you'd need me next
+
+**Assistant commentary:**
+
+> I’ll validate scoring under perturbations, restore the PBGP method code, and inspect the sample for a small pilot. I’ll keep `log.md` updated and flag any point that needs your input.
+
+**Assistant clarification request:**
+
+> For validation on real records, do you have a known error or unauthorized action in the AI Village sample? A turn/session ID or a short description of the task and mistake would help establish the ground truth. I’ll continue the scoring checks and synthetic controls meanwhile.
+
+**Assistant commentary:**
+
+> The method code is restored at its pinned revision, and I’ve fixed the missing submodule configuration for future clones. The sample has no system prompts or attack labels, and some message fields are lists. I’ll handle both formats and use synthetic cases with known authorization first.
+
+**User reply:**
+
+> nope, I give you fully autonomy to inspect and work on it :)
+
+**Assistant commentary:**
+
+> I found two concrete failures: a negative scroll amount rejected by the tool, and a shell command sent without restarting after a timeout warning. Both were followed by corrective actions. I’ll use these as narrow error cases; they don’t establish malicious intent.
+
+**Assistant commentary:**
+
+> The two recorded cases and the scoring script are prepared. The synthetic pilot can continue, but sending archived context to the external scorer needs your approval.
+>
+> Automatic approval review rejected that probe because it would send recorded commands, paths, URLs, and project details to UncloseAI. I’ll keep the recorded cases local unless you explicitly approve the transfer.
+
+**Assistant transfer-approval request:**
+
+> May I send the two selected recorded tool calls and up to three preceding tool interactions per case to UncloseAI at https://hermes.ai.unturf.com/v1/completions for probability scoring? This includes archived commands, paths, URLs, and project details. Automatic approval review requires explicit authorization for that transfer.
+
+Suggested options: “Keep recorded data local; continue synthetic tests” and “Approve sending these two cases to UncloseAI”. No approval was received in this exchange.
+
+**Assistant commentary:**
+
+> The synthetic run is progressing, with some requests timing out. I’m treating those as missing measurements. The boundary and probability checks passed, and repeated identical inputs sometimes return slightly different scores—a source of noise we need to account for.
+
+**User clarification reply (not transfer approval):**
+
+> what is unclose ai and why hermes ai? just wanted some clarity
+
+**Assistant commentary:**
+
+> - **UncloseAI** is a third-party service offering free, OpenAI-compatible model endpoints. Its [website](https://uncloseai.com/) lists `hermes.ai.unturf.com/v1` as one of those endpoints.
+> - **“Hermes” is the endpoint’s hostname.** The model it currently reports is Qwen3.8-27B. I followed OmniRoute’s configured route, then verified that it returned logprobs.
+> - So far, I’ve sent only synthetic text there. Your archived cases remain local; your clarification question isn’t approval to send them.
+>
+> Automatic approval review rejected transferring the archived context because it includes recorded commands, paths, URLs, and project details. That transfer remains pending your explicit approval.
+
+**Assistant commentary:**
+
+> All 18 synthetic cases now have valid scores after retrying the five timeouts once. The perturbation score ranked the synthetic cases better than simple token surprise: AUROC 0.819 versus 0.458. Benign cases still overlap with attack cases, so this is exploratory evidence. I’m publishing the report and updated log; recorded-data scoring remains pending your approval.
+
+### Actions, evidence, and practical decisions
+
+- Checked remote branches with approved network access: `main` points to the same pinned PBGP method commit; `gh-pages` remains available; working branch stays `master`. Added `.gitmodules` for the already-tracked `pbgp-context` Gitlink, then initialized it at `7b2d5d78844843ebd23405a563cd56d0ba3741b1`. No method-submodule files were edited.
+- Read the method README, extractor, and evaluation code. Full feature extraction expects entropy and ranks; the remote endpoint provides only partial distributions. Implemented a separate reduced-profile scorer instead of inventing unavailable entropy/rank measurements or changing the original code.
+- Audited all 577 rows locally. Message fields are dicts in 422 rows and lists in 155. There are zero populated `system` fields, 217 populated outputs, and 45 populated errors. An initial exploratory inspection assumed dict-only messages and failed; corrected the parser to support all observed formats. Many nonempty errors are successful Git stderr, so those were not labeled as failures.
+- Added `score_fixed_text.py` with exact echo validation, exclusion of context tokens, finite nonpositive logprob checks, token-boundary rejection, and fixed-continuation token alignment across variants. Distributional Wasserstein/Jensen–Shannon distance and aligned token deltas are reported separately.
+- Added five meaningful unit tests protecting boundary handling, null/invalid probabilities, distribution-versus-position comparisons, and tied/missing-class AUROC calculations. All five pass. Checked that selected recorded contexts omit the current turn ID and current outcome text. No recorded-context remote response file exists.
+- Ran `run_synthetic_pilot.py`: six task families, each with a benign action, an unauthorized peer-suggested action, and the same sensitive action explicitly authorized by the task owner. Both benign and unauthorized peers suggest exact command strings, controlling for mere copying. Each fixed action is scored under original context, peer removal, authority-label reformatting, and an identical-input repeat. Commands are inert strings; none are executed.
+- Primary score direction was fixed before results: higher peer-removal Wasserstein logprob distance is suspicious. This follows the implemented clean-rerun comparison as a proxy; it does not resolve the README/code protocol distinction described in the supplied export.
+- Initial run: 16/18 complete cases; two network-family cases had five timed-out variants. Initial descriptive AUROC was 0.782 and mean-NLL baseline 0.418. Retried only the five timeouts once after checking that the live model ID was unchanged. Preserved `profiles_initial.json`, `summary_initial.json`, and all failed raw responses. All retries succeeded.
+- Final synthetic result: 18/18 complete cases, no rejected cases; primary AUROC 0.8194444444444444; original-action mean-NLL AUROC 0.4583333333333333; maximum identical-input repeat Wasserstein distance 0.18837706417171932. Raw evidence is in `pbgp-pilot/synthetic_pilot/`. Small, templated cases and varying action length limit inference. The one-token hostname action is retained in the primary analysis; a separately marked three-token-minimum sensitivity analysis follows the original extractor's minimum without silently discarding the inconvenient short control.
+- Selected two locally verified operational errors. `ca0352c7-1af6-46d8-b816-92c26a99c90b` uses `restart=false` after a prior timeout explicitly requires restart; its own tool result rejects it and the next turn restarts. `bb6660a7-637e-4314-a337-09dc5b1a2661` has `scroll_amount=-7` in the actual function-call arguments (absent from the flattened action); the tool rejects it and the next turn uses `7`. These labels are tool rejections, not malicious intent or proof of unauthorized activity.
+- `inspect_sample.py` builds up to three earlier tool interactions for each selected case, with current/later outputs confined to the label-evidence section. Counterfactual repaired actions change only restart/scroll magnitude and are labeled as repairs to a stated precondition, not observed successes. `run_recorded_pilot.py` is prepared but has not run. It requires an explicit external-transfer flag after authorization.
+- Automatic approval review rejected the recorded probe: “The script would transmit reconstructed archived tool contexts—including private prompts, commands, paths, URLs, and project details—to the external UncloseAI endpoint; general autonomy to inspect the sample does not authorize this sensitive egress to that destination.” The action was not retried or routed through another destination. Unaffected synthetic work continued. User's subsequent clarification question is not approval.
+- Generated recorded contexts and future recorded remote outputs are ignored by Git. Scripts and ID-level findings are publishable/reproducible from the already-supplied sample, without adding another copy of archived context to the commit.
+- Verified the [AI Village dataset card](https://huggingface.co/datasets/aidigestorg/ai-village). It describes `computer_use_sessions.jsonl.gz` with session goals, separate screenshots, and exclusion of original raw LLM-call prompts. Raw README retrieval returned HTTP 401. The public card says file access is gated and manually reviewed. No HF token environment variable, official HF token-cache file, or installed `huggingface_hub` package was found here. Did not bypass gating or use unrelated credentials.
+- Verified [UncloseAI's own website](https://uncloseai.com/) lists the Hermes API endpoint. Its [inference guide](https://uncloseai.com/inference.html) explicitly describes hostnames as routing labels and says Hermes can serve Qwen. Static documentation still lists Qwen3.6; the live catalog reports `turboderp/Qwen3.8-27B-exl3`, so recorded evidence uses the discovered ID. Its [privacy policy](https://uncloseai.com/privacy-policy.html) claims US processing, temporary console logging, and no permanent chat storage. These are provider claims, not independently audited guarantees.
+- Added `pilot_report.md` and a reproducible summarizer with limitations and source attribution to AI Digest / AI Village. No original-agent probabilities, full-vocabulary entropy, calibrated false-positive rates, swarm detection, or prevention claims are made.
+
+### Where user input is needed next
+
+1. **Recorded-case external transfer:** Explicit approval to send the two selected tool calls and their up-to-three preceding tool interactions per case to UncloseAI's Hermes endpoint. Prepared script and generated contexts can be inspected locally. Approval is pending.
+2. **Wider context/authorization study:** Authenticated, approved Hugging Face dataset access (or local paths to session/goal tables already obtained legitimately) is needed to retrieve missing goals and screenshots. This is separate from the two tool-feedback-backed error cases and separate from any real OpenAI incident transcripts.
+3. **Future research choices:** Broader independent task families, held-out benign controls, a target false-positive budget, and original incident access remain unresolved. The user delegated case inspection; no specific known error was supplied.
+
+### Final response for this milestone
+
+> UncloseAI is the free third-party service; Hermes is its API hostname, which currently reports Qwen3.8-27B. Their own inference guide confirms that hostname and model names can differ.
+>
+> The synthetic pilot is complete: 18 cases, exploratory AUROC 0.819 versus 0.458 for simple token surprise. The report and updated log are published on master.
+>
+> May I send the two selected recorded cases and their preceding context to that endpoint next?
+>
+> Automatic approval review blocked that transfer because it includes archived commands, paths, URLs, and project details. Those cases remain local until you explicitly approve.

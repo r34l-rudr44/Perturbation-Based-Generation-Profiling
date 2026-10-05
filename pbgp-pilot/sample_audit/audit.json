@@ -1,0 +1,16 @@
+{
+  "rows": 577,
+  "sessions": 16,
+  "message_shapes": {
+    "dict": 422,
+    "list": 155
+  },
+  "nonempty_system_fields": 0,
+  "nonempty_errors": 45,
+  "nonempty_outputs": 217,
+  "limitations": [
+    "No trusted session goals, original prompt logs, or screenshot pixels in this sample.",
+    "Nonempty error fields include normal Git stderr; not automatic failure labels.",
+    "Selected cases demonstrate tool rejection, not malicious intent."
+  ]
+}
