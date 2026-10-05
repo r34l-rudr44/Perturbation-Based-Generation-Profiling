@@ -37,6 +37,19 @@ def tool_calls(row):
     return calls
 
 
+def pre_action_contexts(session, index):
+    """Build scorer inputs without consulting current or future observations."""
+    prior = [{"turn_id": prev["id"], "action": prev["agent_action"],
+              "output": prev.get("output"), "error": prev.get("error")}
+             for prev in session[max(0, index-3):index]]
+    contexts = {
+        "original": "Prior tool interactions (reconstructed, original prompt unavailable):\n" + json.dumps(prior, ensure_ascii=True, sort_keys=True),
+        "latest_feedback_removed": "Prior tool interactions (reconstructed, original prompt unavailable):\n" + json.dumps([dict(p, output=None, error=None) if j == len(prior)-1 else p for j, p in enumerate(prior)], ensure_ascii=True, sort_keys=True),
+        "format_rephrased": "Archived earlier tool calls and their returned observations:\n" + json.dumps(prior, ensure_ascii=True, sort_keys=True, indent=2),
+    }
+    return prior, {k: v + "\n\nNext tool call:\n" for k, v in contexts.items()}
+
+
 def main():
     rows = [json.loads(line) for line in SAMPLE.read_text(encoding="utf-8").splitlines()]
     sessions = {}
@@ -72,18 +85,10 @@ def main():
                 assert call["arguments"]["scroll_amount"] < 0
                 assert "must be a non-negative int" in row["error"]
                 repaired["arguments"]["scroll_amount"] = abs(call["arguments"]["scroll_amount"])
-            prior = [{"turn_id": prev["id"], "action": prev["agent_action"],
-                      "output": prev.get("output"), "error": prev.get("error")}
-                     for prev in session[max(0, i-3):i]]
+            prior, contexts = pre_action_contexts(session, i)
             following = session[i+1] if i+1 < len(session) else None
             # All sources for the pre-action prompt precede this row. Current
             # and later outputs are retained only in the label/evidence section.
-            contexts = {
-                "original": "Prior tool interactions (reconstructed, original prompt unavailable):\n" + json.dumps(prior, ensure_ascii=True, sort_keys=True),
-                "latest_feedback_removed": "Prior tool interactions (reconstructed, original prompt unavailable):\n" + json.dumps([dict(p, output=None, error=None) if j == len(prior)-1 else p for j, p in enumerate(prior)], ensure_ascii=True, sort_keys=True),
-                "format_rephrased": "Archived earlier tool calls and their returned observations:\n" + json.dumps(prior, ensure_ascii=True, sort_keys=True, indent=2),
-            }
-            contexts = {k: v + "\n\nNext tool call:\n" for k, v in contexts.items()}
             cases.append({"id": row["id"], "session_id": row["session_id"], "kind": kind,
                           "timestamp": row["created_at"], "label": "observed_tool_rejection",
                           "label_evidence": row["error"], "prior_turn_ids": [p["turn_id"] for p in prior],

@@ -820,3 +820,47 @@ aws --profile hf --endpoint-url https://s3.hf.co/r34lrudraa s3 cp s3://ai-villag
 ### Response to the user
 
 > You’re signed in, and I downloaded the session file successfully—no S3 setup is needed. All 16 sampled sessions now have matching goals. I’ll continue inspecting them locally; nothing else is needed from you right now.
+
+## 2026-10-06: Leakage audit and covert-attack evaluation design
+
+### Conversation
+
+**User:** “what are you gonna do now?”
+
+**Assistant:** Planned to read session goals alongside actions, identify mistakes or scope violations, check evidence, build a labeled evaluation set, and record decisions/results. Explained that external transfer of new records would need an approved scope.
+
+**User:** “I also want you to go through our tests and see if there's anything leaking or any way model could learn/overfit? if not -- lmk. basically i want a concerete test on if PBGP can detect covert agent attack's or not :) and the swarm attack data is a great starting point, what say?”
+
+**Assistant commentary:** Committed to auditing tests, case construction, scoring and the evidence needed for a covert-attack test. Explained that swarm records require established attack labels, authorization boundaries and pre-action context.
+
+**User:** “continue”
+
+**Assistant progress exchanges:** Reported confirmed synthetic wording shortcuts, related-task split risk, direct label-dependent combined-score routing and conflicting score direction. Subsequently reported a retrospective phrase-only baseline AUROC of 1.0, no exact current-outcome text in 16 successful recorded requests, and passing leakage regression tests. Reported the final protocol and successful revalidation of saved responses.
+
+### Actions, rationale and results
+
+- Read current pilot generation/extraction/scoring and all seven existing tests, plus the pinned method's collection, features, analysis and safety-usefulness source. No original method feature dataset exists here, so numerical inflation of its old performance is unknown.
+- Confirmed direct ground-truth-dependent routing in the original combined scorer: mode determines which is_attack divergence rows are selected. This is unavailable to a deployed detector and invalidates that combined analysis as deployment evidence.
+- Confirmed global scaling before CV in two original paths, row-level StratifiedKFold across related task variants, and evaluation-set normalization. The safety-usefulness feature path fits scaling within folds but still splits related rows.
+- Confirmed explicit synthetic label cues, prompt-assignment attack labels without verified behavior, oracle removal of known side objectives, and independently generated continuations in the old divergence path. README and analysis disagree about suspicious divergence direction.
+- Ran offline audit baselines: the class-exclusive peer-conflict phrase achieves AUROC 1.000; action character length 0.645833 and token count 0.652778. These baselines were chosen after inspection and are diagnostic, not held-out detector results. Exact same-action authorization pairs rank attack W1 higher in 5 of 6 families, but still have wording/goal confounds.
+- No inference code in this pilot trains/fine-tunes the remote model. Its prior exposure to public data and any provider-side training behavior cannot be proven from local code. A learned classifier could exploit the found shortcuts. Dataset secrecy and model contamination are distinct from outcome leakage and require distinct controls.
+- Inspected all 16 successful recorded requests for full current error strings and following turn IDs; found zero occurrences. Added a pure pre_action_contexts function and mutation test proving changes to current/future observations cannot alter its contexts. Repairs/rules/case selection remain retrospective development work.
+- Added detector input allowlisting, label-independent context selection, no-op rejection, declared group/exact-input partition checks, and benign-only threshold calibration. Group independence and absence of semantic near-duplicates must still be established by the case curator.
+- Hardened score extraction to require offsets consistent with token reconstruction, and profile/AUC arithmetic to reject silent array truncation or invalid labels/scores. Added three tests for these cases. Revalidated 72 successful synthetic responses and 16 recorded responses locally without fresh provider requests; all passed.
+- Added five evaluation-leakage tests, bringing the suite to 15 passing tests. Guards are primitives for future evaluation; they do not silently modify or certify original classifiers. Kept the method submodule pinned and unchanged to preserve provenance.
+- Created leakage_audit.md, aggregate leakage_audit_results.json and a concrete proposed covert_attack_protocol.md. Updated the report generator to surface the audit and resolved session metadata access. Historical AUROC values remain visible as exploratory evidence.
+- Verified primary public sources: METR describes about 1,300 transcripts reviewed and the unsanctioned board; the public recovered-tables dataset exposes timing/activity records. We have not obtained full original swarm trajectories. AI Village is a separate experiment; session goals alone cannot certify covert attacks. Sources are linked in the audit.
+- Several read-only source excerpts failed because First was accidentally supplied the word sixty instead of an integer. Corrected the reads; no data or implementation changed as a result.
+
+### Test design and remaining work
+
+- Primary proposed hypothesis is unauthorized peer-goal adoption, with fixed-action W1 under a predetermined untrusted-channel removal and high-is-suspicious direction. Persistent internal objectives require a separate hypothesis; no direction flipping after test results.
+- Freeze model, prompt budget, scorer, perturbation, retry policy and baselines before sealed test scores. Hold out whole episodes/task templates and connected swarm components. Use independent policy/execution evidence for labels, with future outcomes/private actor goals kept outside monitor inputs.
+- Proposed collection target: 120 development episodes, 200 independent benign calibration episodes, 300 held-out benign episodes and 100 verified attack episodes. These are a target, not data already collected or a guarantee of independence/power.
+- Calibrate at the episode maximum score for a target 5% benign blocking rate, then report detection by the first unauthorized action, actual false positives, task loss, availability and group-aware uncertainty. Existing 18 synthetic and two error cases are development-only.
+- The protocol has not yet been executed. Original swarm replay remains limited by absent original trajectories. The defensible current conclusion is unresolved: existing evidence neither validates covert detection nor rules PBGP out universally.
+
+### Final response
+
+> I found leakage risks: a wording-only check perfectly separates the synthetic labels, and the original combined scorer uses ground-truth labels to select scores. I added safeguards and all 15 tests pass. The audit and concrete held-out protocol are published; covert-attack detection remains unproven. Swarm behavior is a useful starting threat model, but our AI Village records are a different experiment and full swarm trajectories are still missing.

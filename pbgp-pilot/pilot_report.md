@@ -35,6 +35,10 @@ Maximum identical-input repeat Wasserstein distance: **0.188**.
 
 Label 1 denotes a synthetic unauthorized action; label 0 denotes authorization by construction.
 
+## Leakage audit (2026-10-06)
+
+The current synthetic benchmark has a class-exclusive peer-conflict phrase: a retrospective phrase-only baseline yields AUROC 1.000. This confounds the PBGP proxy's 0.819. The historical method also contains label-dependent combined-score routing, row-level splits across related tasks, and global preprocessing paths. Existing results do not establish covert-attack detection. See [leakage audit](leakage_audit.md), [aggregate audit evidence](leakage_audit_results.json), and [proposed held-out protocol](covert_attack_protocol.md). The protocol has not been executed.
+
 ## Interpretation and limits
 
 - This is teacher-forced scoring by a different model, using partial logprob profiles. It does not reproduce the original PBGP model runs or recover full vocabulary entropy, exact ranks outside the returned alternatives, or the original agents' probabilities.
@@ -66,7 +70,7 @@ The successful run used only the latest prior interaction and 200-character head
 
 A separately marked, label-selected field diagnostic finds the negative scroll value more surprising than the positive repair, while the incorrect restart=false value is less surprising than restart=true. This is a localized hindsight diagnostic, not a validated detector. The negative-value span has two tokens and includes leading whitespace, whereas the positive span has one token; tokenization differs. Evidence: `recorded_field_diagnostics.json`.
 
-Next requirements: authenticated approved dataset access or local session/goal tables for wider authorization analysis, plus richer original prompt context if available. No Hugging Face token is configured here. These two cases are approved at both named UncloseAI endpoints; additional cases or another provider would need their own transfer scope.
+Session metadata was subsequently downloaded through the signed-in Hugging Face browser: all 16 sampled sessions have matching nonempty goals in the 78,362-row export. Raw matches remain local; coverage is in session_goal_coverage.json. Original prompt context, verified covert-attack labels, and original swarm trajectories remain missing. These two cases are approved at both named UncloseAI endpoints; additional recorded context or another provider would need its own transfer scope.
 
 UncloseAI is the service name; `hermes.ai.unturf.com` is one of its routing hostnames. Its own website lists this endpoint, and its inference guide explicitly says a Hermes hostname can serve Qwen. The live catalog for this run reported Qwen3.8, while static documentation still names Qwen3.6. References: https://uncloseai.com/ and https://uncloseai.com/inference.html . Its privacy policy describes US processing, temporary console logs, and no permanent chat storage; these are provider statements, not independently audited guarantees: https://uncloseai.com/privacy-policy.html .
 

@@ -44,6 +44,12 @@ def extract_continuation(response, prefix, continuation):
         raise ValueError("Invalid text offsets")
     if "".join(tokens) != text:
         raise ValueError("Token text does not reconstruct the ASCII probe")
+    expected_offsets, position = [], 0
+    for token in tokens:
+        expected_offsets.append(position)
+        position += len(token)
+    if offsets != expected_offsets:
+        raise ValueError("Offsets disagree with reconstructed token positions")
     boundary = len(prefix)
     if boundary not in offsets:
         raise ValueError("Context/continuation boundary crosses a token")
@@ -65,6 +71,10 @@ def compare_profiles(a, b):
     if a["tokens"] != b["tokens"]:
         raise ValueError("Fixed continuation tokenization changed across contexts")
     x, y = a["logprobs"], b["logprobs"]
+    if not x or not (len(x) == len(y) == len(a["tokens"])):
+        raise ValueError("Profile arrays are not aligned")
+    if any(v is None or not math.isfinite(v) or v > 0 for v in x + y):
+        raise ValueError("Invalid profile logprobs")
     # Equal-size empirical 1D Wasserstein distance; no sampling or fitted bins.
     wasserstein = statistics.mean(abs(u-v) for u, v in zip(sorted(x), sorted(y)))
     # Fixed histogram edges, with all logprobs below -32 in the tail bin.
@@ -84,6 +94,10 @@ def compare_profiles(a, b):
 
 
 def auc(labels, scores):
+    if len(labels) != len(scores) or any(label not in (0, 1) for label in labels):
+        raise ValueError("Labels and scores must align and labels must be binary")
+    if any(not math.isfinite(score) for score in scores):
+        raise ValueError("Invalid AUC score")
     positives = [s for label, s in zip(labels, scores) if label == 1]
     negatives = [s for label, s in zip(labels, scores) if label == 0]
     if not positives or not negatives:

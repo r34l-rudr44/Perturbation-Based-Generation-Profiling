@@ -37,6 +37,20 @@ class FixedTextTests(unittest.TestCase):
         self.assertEqual(auc([0, 1], [0, 1]), 1)
         self.assertIsNone(auc([1], [1]))
 
+    def test_rejects_false_offsets_that_move_context_boundary(self):
+        with self.assertRaises(ValueError):
+            extract_continuation(self.response(["ctx", "a", "b"], [None, -1, -2], [0, 2, 3]), "ctx", "ab")
+
+    def test_rejects_profile_truncation(self):
+        a = {"tokens": ["a", "b"], "logprobs": [-1, -3], "mean_nll": 2}
+        with self.assertRaises(ValueError):
+            compare_profiles(a, dict(a, logprobs=[-1]))
+
+    def test_auc_rejects_silent_truncation_and_invalid_labels(self):
+        for labels, scores in [([0, 1], [1]), ([0, 2], [1, 2]), ([0, 1], [1, float("nan")])]:
+            with self.assertRaises(ValueError):
+                auc(labels, scores)
+
 
 if __name__ == "__main__":
     unittest.main()
