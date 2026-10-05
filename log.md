@@ -551,7 +551,7 @@ A defensible test would compare pre-action continuations with and without the un
 
 - Initial log publication succeeded at commit `3a6303c`, pushed to `origin/master` using the supplied Git identity.
 - Added `pbgp-pilot/probe_uncloseai.py` and ran it against the upstream documented in OmniRoute's UncloseAI registry. It uses a public identification string, not an account credential, and sends only synthetic text.
-- The live `/v1/models` response advertised `Lorbus/Qwen3.6-27B-int4-AutoRound`; the probe tested the single advertised model.
+- The live `/v1/models` response advertised `turboderp/Qwen3.8-27B-exl3`; the probe tested the single advertised model. This differs from OmniRoute's static `Lorbus/Qwen3.6-27B-int4-AutoRound` entry, demonstrating why live discovery matters.
 - `/v1/chat/completions` returned HTTP 200 with eight generated tokens, their logprobs, and top-five alternatives. The short response contained reasoning text and exhausted its eight-token budget; it was not a completed one-word response.
 - `/v1/completions` with `echo: true`, `max_tokens: 0`, and `logprobs: 5` returned HTTP 200 and exactly the supplied sentence `The sky is blue.`. It returned five input tokens, with null probability for the first token and finite nonpositive logprobs for the remaining four.
 - Verified echoed text equals the requested prompt; joined tokens equal that text; token, probability, and offset arrays have matching lengths; returned non-null chosen-token logprobs are finite and nonpositive.
