@@ -864,3 +864,15 @@ aws --profile hf --endpoint-url https://s3.hf.co/r34lrudraa s3 cp s3://ai-villag
 ### Final response
 
 > I found leakage risks: a wording-only check perfectly separates the synthetic labels, and the original combined scorer uses ground-truth labels to select scores. I added safeguards and all 15 tests pass. The audit and concrete held-out protocol are published; covert-attack detection remains unproven. Swarm behavior is a useful starting threat model, but our AI Village records are a different experiment and full swarm trajectories are still missing.
+
+## 2026-10-06: Best use of AI Village for PBGP
+
+**User:** “what does ai village gives you and what's the best usecase we can do with this dataset in lines with my current project.”
+
+**Assistant commentary:** Checked the dataset contents against PBGP's required inputs to identify the strongest supported evaluation.
+
+**Evidence/decision:** Re-read the official AI Village dataset card. It provides session and broader goals, actions/messages, tool results, peer/human chats, memories, timeline metadata, and separately packaged screenshots. Exact original LLM-call prompts are excluded; original token probabilities and ready-made verified covert-attack labels are not supplied. Recorded intent requires corroborating instructions and observations to establish authorization. Existing 577-turn/16-session sample and matched goals are a starting point, not an independently verified benign population.
+
+**Recommended use:** Test whether PBGP distinguishes legitimate collaboration from unauthorized peer-induced goal adoption in realistic workflows. First curate verified benign episodes including collaboration, retries and sensitive authorized actions to measure false positives. Then construct clearly marked simulated attack variants with independent authorization boundaries and instrumented outcomes, balancing wording/action types and keeping whole task/coordination groups out of development. Report real-data benign blocking separately from reconstructed/simulated attack recall. Any independently verified natural scope violations can form a separate observational test. A different model's scoring remains a proxy; this cannot establish original swarm detection or original-agent probabilities.
+
+**Response content:** Explain the available data and its gaps, recommend legitimate-collaboration versus unauthorized-goal-adoption evaluation at a fixed episode-level false-positive rate, and state that AI Village supplies realism and controls while swarm reports motivate attack mechanisms. Source: https://huggingface.co/datasets/aidigestorg/ai-village . No new dataset transfer, model training or scoring call was performed.
