@@ -540,3 +540,33 @@ A defensible test would compare pre-action continuations with and without the un
 **Maintenance convention:** Append each subsequent user/assistant exchange and a concise action/result record. Update the current-status table and open questions when evidence changes. Keep historical corrections visible; never silently rewrite past conclusions as though they were known earlier. Redact new credentials before writing. Commit and publish meaningful updates so the record is available to future clones. Include factual reasons for decisions, not private internal reasoning. Missing historical messages must stay identified as missing.
 
 **Publication:** This log is being committed and pushed to `master` after verification. Git history and the remote commit identify whether publication succeeded; the conversation export remains preserved above.
+
+## Live capability milestone — 2026-10-06
+
+**Assistant commentary:**
+
+> The log is published on `master`, so future clones will include it. I’m now testing UncloseAI, one of OmniRoute’s keyless routes, for both generated-token probabilities and scoring text that already exists.
+
+**Actions/results:**
+
+- Initial log publication succeeded at commit `3a6303c`, pushed to `origin/master` using the supplied Git identity.
+- Added `pbgp-pilot/probe_uncloseai.py` and ran it against the upstream documented in OmniRoute's UncloseAI registry. It uses a public identification string, not an account credential, and sends only synthetic text.
+- The live `/v1/models` response advertised `Lorbus/Qwen3.6-27B-int4-AutoRound`; the probe tested the single advertised model.
+- `/v1/chat/completions` returned HTTP 200 with eight generated tokens, their logprobs, and top-five alternatives. The short response contained reasoning text and exhausted its eight-token budget; it was not a completed one-word response.
+- `/v1/completions` with `echo: true`, `max_tokens: 0`, and `logprobs: 5` returned HTTP 200 and exactly the supplied sentence `The sky is blue.`. It returned five input tokens, with null probability for the first token and finite nonpositive logprobs for the remaining four.
+- Verified echoed text equals the requested prompt; joined tokens equal that text; token, probability, and offset arrays have matching lengths; returned non-null chosen-token logprobs are finite and nonpositive.
+- Raw requests/results are saved in `pbgp-pilot/uncloseai_logprobs_probe.json`. This is stronger evidence than catalog metadata, but remains a tiny synthetic capability test.
+
+**Assistant commentary:**
+
+> UncloseAI returned chosen-token logprobs, top-five alternatives, and probabilities for an echoed input sentence. That gives us a promising route for scoring recorded text. I’ll save the probe and update the log; this is a capability check, not a PBGP detection result.
+
+**Decision:** Prioritize validating this route for the archived-action pilot because prompt echo scoring directly addresses the missing capability. Further provider coverage remains open. Top-five values do not expose full-vocabulary entropy. No attack labels, detector calibration, or prevention conclusions have been produced.
+
+**Updated next work:** Verify fixed-continuation scoring under paired original/perturbed contexts and handle token boundaries and the null first token; restore the PBGP method code; inspect and label small pre-action cases with benign controls. The wider OmniRoute free-provider inventory and account-dependent routes remain unfinished.
+
+**Assistant final for this milestone:**
+
+> - Created and pushed `log.md` to `master`: supplied conversation, this chat, decision summaries, progress, and open questions. The API key is redacted.
+> - Resumed testing: UncloseAI returned generated-token logprobs, top-five alternatives, and input-token scoring. Probe and results are saved.
+> - Next: validate scoring under perturbations, then build the labeled PBGP pilot.
