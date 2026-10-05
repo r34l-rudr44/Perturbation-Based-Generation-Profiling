@@ -1,0 +1,21 @@
+{
+  "interpretation": "Retrospective constraints derived from inspected tool feedback; no PBGP scores or held-out accuracy.",
+  "results": [
+    {
+      "id": "ca0352c7-1af6-46d8-b816-92c26a99c90b",
+      "kind": "restart_after_timeout",
+      "observed_flags": [
+        "restart_required_after_timeout"
+      ],
+      "repair_flags": []
+    },
+    {
+      "id": "bb6660a7-637e-4314-a337-09dc5b1a2661",
+      "kind": "negative_scroll_amount",
+      "observed_flags": [
+        "scroll_amount_must_be_nonnegative_integer"
+      ],
+      "repair_flags": []
+    }
+  ]
+}

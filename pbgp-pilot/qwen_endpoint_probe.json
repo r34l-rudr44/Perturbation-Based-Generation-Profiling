@@ -1,0 +1,250 @@
+{
+  "base_url": "https://qwen.ai.unturf.com/v1",
+  "catalog": {
+    "status": 200,
+    "response": {
+      "object": "list",
+      "data": [
+        {
+          "id": "turboderp/Qwen3.8-27B-exl3",
+          "object": "model",
+          "created": 1791233144,
+          "owned_by": "vllm",
+          "root": "turboderp/Qwen3.8-27B-exl3",
+          "parent": null,
+          "max_model_len": 65536,
+          "permission": [
+            {
+              "id": "modelperm-9fd2245d668b3abb",
+              "object": "model_permission",
+              "created": 1791233144,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "probe_text": "The sky is blue.",
+  "request": {
+    "model": "turboderp/Qwen3.8-27B-exl3",
+    "prompt": "The sky is blue.",
+    "echo": true,
+    "max_tokens": 0,
+    "logprobs": 5
+  },
+  "echo": {
+    "status": 200,
+    "response": {
+      "id": "cmpl-b35bf4b0fdbc87da",
+      "object": "text_completion",
+      "created": 1791233145,
+      "model": "turboderp/Qwen3.8-27B-exl3",
+      "choices": [
+        {
+          "index": 0,
+          "text": "The sky is blue.",
+          "logprobs": {
+            "text_offset": [
+              0,
+              3,
+              7,
+              10,
+              15
+            ],
+            "token_logprobs": [
+              null,
+              -9.574528694152832,
+              -1.401513695716858,
+              -2.500739336013794,
+              -1.8579075336456299
+            ],
+            "tokens": [
+              "The",
+              " sky",
+              " is",
+              " blue",
+              "."
+            ],
+            "top_logprobs": [
+              null,
+              {
+                " sky": -9.574528694152832,
+                " following": -3.320622682571411,
+                " ": -3.570622682571411,
+                " passage": -3.640935182571411,
+                " study": -4.289372444152832,
+                " author": -4.375309944152832
+              },
+              {
+                " is": -1.401513695716858,
+                " above": -2.2062010765075684,
+                " was": -2.3546385765075684,
+                " over": -3.1280760765075684,
+                " in": -3.2843260765075684
+              },
+              {
+                " blue": -2.500739336013794,
+                " a": -2.039801836013794,
+                " the": -2.336676836013794,
+                " dark": -3.047614336013794,
+                " not": -3.063239336013794
+              },
+              {
+                ".": -1.8579075336456299,
+                " because": -1.0766575336456299,
+                ",": -1.9047825336456299,
+                " due": -2.81103253364563,
+                " and": -3.26415753364563
+              }
+            ]
+          },
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null,
+          "prompt_logprobs": [
+            null,
+            {
+              "12515": {
+                "logprob": -9.574528694152832,
+                "rank": 2023,
+                "decoded_token": " sky"
+              },
+              "2614": {
+                "logprob": -3.320622682571411,
+                "rank": 1,
+                "decoded_token": " following"
+              },
+              "220": {
+                "logprob": -3.570622682571411,
+                "rank": 2,
+                "decoded_token": " "
+              },
+              "20438": {
+                "logprob": -3.640935182571411,
+                "rank": 3,
+                "decoded_token": " passage"
+              },
+              "3788": {
+                "logprob": -4.289372444152832,
+                "rank": 4,
+                "decoded_token": " study"
+              },
+              "3049": {
+                "logprob": -4.375309944152832,
+                "rank": 5,
+                "decoded_token": " author"
+              }
+            },
+            {
+              "369": {
+                "logprob": -1.401513695716858,
+                "rank": 1,
+                "decoded_token": " is"
+              },
+              "3294": {
+                "logprob": -2.2062010765075684,
+                "rank": 2,
+                "decoded_token": " above"
+              },
+              "557": {
+                "logprob": -2.3546385765075684,
+                "rank": 3,
+                "decoded_token": " was"
+              },
+              "888": {
+                "logprob": -3.1280760765075684,
+                "rank": 4,
+                "decoded_token": " over"
+              },
+              "303": {
+                "logprob": -3.2843260765075684,
+                "rank": 5,
+                "decoded_token": " in"
+              }
+            },
+            {
+              "6105": {
+                "logprob": -2.500739336013794,
+                "rank": 3,
+                "decoded_token": " blue"
+              },
+              "264": {
+                "logprob": -2.039801836013794,
+                "rank": 1,
+                "decoded_token": " a"
+              },
+              "279": {
+                "logprob": -2.336676836013794,
+                "rank": 2,
+                "decoded_token": " the"
+              },
+              "6121": {
+                "logprob": -3.047614336013794,
+                "rank": 4,
+                "decoded_token": " dark"
+              },
+              "524": {
+                "logprob": -3.063239336013794,
+                "rank": 5,
+                "decoded_token": " not"
+              }
+            },
+            {
+              "13": {
+                "logprob": -1.8579075336456299,
+                "rank": 2,
+                "decoded_token": "."
+              },
+              "1521": {
+                "logprob": -1.0766575336456299,
+                "rank": 1,
+                "decoded_token": " because"
+              },
+              "11": {
+                "logprob": -1.9047825336456299,
+                "rank": 3,
+                "decoded_token": ","
+              },
+              "4016": {
+                "logprob": -2.81103253364563,
+                "rank": 4,
+                "decoded_token": " due"
+              },
+              "321": {
+                "logprob": -3.26415753364563,
+                "rank": 5,
+                "decoded_token": " and"
+              }
+            }
+          ],
+          "prompt_token_ids": null,
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.26.0-bfdda7a0",
+      "usage": {
+        "prompt_tokens": 5,
+        "total_tokens": 6,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": null,
+          "multimodal_tokens": null
+        }
+      },
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": null
+    }
+  }
+}

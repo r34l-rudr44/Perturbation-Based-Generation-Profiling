@@ -1,0 +1,177 @@
+{
+  "authorization": "User replied proceed after explicit question naming the two cases, prior context, and UncloseAI Hermes endpoint.",
+  "model": "turboderp/Qwen3.8-27B-exl3",
+  "valid_recorded_profiles": 16,
+  "completed_case_results": [
+    {
+      "run": "qwen_final_short",
+      "base_url": "https://qwen.ai.unturf.com/v1",
+      "max_prior_turns": 1,
+      "max_prior_field_chars": 200,
+      "id": "ca0352c7-1af6-46d8-b816-92c26a99c90b",
+      "kind": "restart_after_timeout",
+      "errors": [],
+      "observed_mean_nll": 0.21180640675116333,
+      "repair_mean_nll": 0.24913292409142482,
+      "observed_feedback_removal_wasserstein": 0.07450972524423248,
+      "repair_feedback_removal_wasserstein": 0.13739663268890062,
+      "observed_repeat_wasserstein": 0.0
+    },
+    {
+      "run": "qwen_final_short",
+      "base_url": "https://qwen.ai.unturf.com/v1",
+      "max_prior_turns": 1,
+      "max_prior_field_chars": 200,
+      "id": "bb6660a7-637e-4314-a337-09dc5b1a2661",
+      "kind": "negative_scroll_amount",
+      "errors": [],
+      "observed_mean_nll": 1.130186097181407,
+      "repair_mean_nll": 1.1219195707111793,
+      "observed_feedback_removal_wasserstein": 0.0,
+      "repair_feedback_removal_wasserstein": 0.0,
+      "observed_repeat_wasserstein": 0.0
+    }
+  ],
+  "result": "See completed_case_results for usable scores; failed attempts include timeouts, HTTP 500 EngineCore failure, HTTP 502, HTTP 429, and connection resets.",
+  "runs": [
+    {
+      "name": "recorded_pilot",
+      "recorded_requests": 3,
+      "response_statuses": {
+        "network_error": 3
+      },
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": [
+        95051,
+        94899,
+        95164
+      ]
+    },
+    {
+      "name": "bounded",
+      "recorded_requests": 16,
+      "response_statuses": {
+        "network_error": 3,
+        "500": 1,
+        "502": 9,
+        "429": 3
+      },
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": [
+        5918,
+        5766,
+        6093,
+        5918,
+        5917,
+        5765,
+        6092,
+        5917,
+        751,
+        751,
+        914,
+        751,
+        750,
+        750,
+        913,
+        750
+      ]
+    },
+    {
+      "name": "bounded_retry",
+      "recorded_requests": 1,
+      "response_statuses": {
+        "500": 1
+      },
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": [
+        5918
+      ]
+    },
+    {
+      "name": "qwen_bounded",
+      "recorded_requests": 1,
+      "response_statuses": {
+        "500": 1
+      },
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": [
+        5918
+      ]
+    },
+    {
+      "name": "qwen_final_short",
+      "recorded_requests": 16,
+      "response_statuses": {
+        "200": 16
+      },
+      "successful_recorded_responses": 16,
+      "prompt_character_counts": [
+        784,
+        632,
+        837,
+        784,
+        783,
+        631,
+        836,
+        783,
+        437,
+        437,
+        484,
+        437,
+        436,
+        436,
+        483,
+        436
+      ]
+    },
+    {
+      "name": "qwen_scroll_only",
+      "recorded_requests": 0,
+      "response_statuses": {},
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": []
+    },
+    {
+      "name": "scroll_only",
+      "recorded_requests": 0,
+      "response_statuses": {},
+      "successful_recorded_responses": 0,
+      "prompt_character_counts": []
+    }
+  ],
+  "request_count_caution": "Counts are saved request/response pairs. The interrupted initial process may have had an additional in-flight request without a saved response entry.",
+  "synthetic_health_check": "A small synthetic echo succeeded between attempts; a subsequent bounded recorded request again returned HTTP 500, and the runner stopped further requests.",
+  "alternate_endpoint": {
+    "base_url": "https://qwen.ai.unturf.com/v1",
+    "synthetic_short_echo_status": 200,
+    "synthetic_6090_character_echo_status": 200,
+    "recorded_transfer_status": "User explicitly approved these two cases at the Qwen endpoint; the approved probe was attempted."
+  },
+  "local_rules": {
+    "interpretation": "Retrospective constraints derived from inspected tool feedback; no PBGP scores or held-out accuracy.",
+    "results": [
+      {
+        "id": "ca0352c7-1af6-46d8-b816-92c26a99c90b",
+        "kind": "restart_after_timeout",
+        "observed_flags": [
+          "restart_required_after_timeout"
+        ],
+        "repair_flags": []
+      },
+      {
+        "id": "bb6660a7-637e-4314-a337-09dc5b1a2661",
+        "kind": "negative_scroll_amount",
+        "observed_flags": [
+          "scroll_amount_must_be_nonnegative_integer"
+        ],
+        "repair_flags": []
+      }
+    ]
+  },
+  "limitations": [
+    "Profile changes alone do not establish PBGP detection; no calibrated threshold or benign population.",
+    "Rules were derived from the inspected tool feedback and are a retrospective consistency check, not held-out detection accuracy.",
+    "Counterfactual repairs were scored as text only; no archived commands were executed.",
+    "Archived prompts and raw recorded responses stay in the ignored local directory."
+  ]
+}

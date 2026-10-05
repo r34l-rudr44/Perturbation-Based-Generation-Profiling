@@ -1,0 +1,53 @@
+{
+  "interpretation": "Secondary diagnostics on known-error fields, selected using labels; not held-out detector performance.",
+  "tokenization_caution": "Compare covering-token spans only: negative scroll includes a leading-space/minus token plus a digit; the repaired digit has separate preceding whitespace. Different token counts/conditioning prevent interpreting the gap as a calibrated field-only probability test.",
+  "results": [
+    {
+      "id": "ca0352c7-1af6-46d8-b816-92c26a99c90b",
+      "kind": "restart_after_timeout",
+      "field": "restart",
+      "candidates": {
+        "observed_error": {
+          "value": "false",
+          "covering_token_nll": 0.20573152601718903,
+          "covering_tokens": [
+            " false"
+          ],
+          "value_only_except_whitespace": true
+        },
+        "counterfactual_repair": {
+          "value": "true",
+          "covering_token_nll": 1.6901065111160278,
+          "covering_tokens": [
+            " true"
+          ],
+          "value_only_except_whitespace": true
+        }
+      }
+    },
+    {
+      "id": "bb6660a7-637e-4314-a337-09dc5b1a2661",
+      "kind": "negative_scroll_amount",
+      "field": "scroll_amount",
+      "candidates": {
+        "observed_error": {
+          "value": "-7",
+          "covering_token_nll": 6.213988304138184,
+          "covering_tokens": [
+            " -",
+            "7"
+          ],
+          "value_only_except_whitespace": true
+        },
+        "counterfactual_repair": {
+          "value": "7",
+          "covering_token_nll": 4.182194232940674,
+          "covering_tokens": [
+            "7"
+          ],
+          "value_only_except_whitespace": true
+        }
+      }
+    }
+  ]
+}

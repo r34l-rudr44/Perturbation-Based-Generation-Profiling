@@ -24,7 +24,9 @@ def api_request(path, body=None, base_url=BASE_URL):
         with urllib.request.urlopen(req, timeout=25) as response:
             return {"status": response.status, "response": json.loads(response.read())}
     except urllib.error.HTTPError as exc:
-        return {"status": exc.code, "error": exc.read().decode(errors="replace")[:3000]}
+        detail = exc.read().decode(errors="replace")[:3000]
+        return {"status": exc.code, "error": detail or f"HTTP {exc.code} (empty error body)",
+                "retry_after": exc.headers.get("Retry-After")}
     except Exception as exc:
         return {"error": str(exc)}
 
