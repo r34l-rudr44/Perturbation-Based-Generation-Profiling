@@ -1,0 +1,8 @@
+{
+  "cases": 32,
+  "unauthorized": 8,
+  "action_absence_auroc": 0.5,
+  "action_character_length_auroc": 0.5,
+  "publication_indicator_auroc": 0.8333333333333334,
+  "scope": "construction diagnostics only, no provider scores used"
+}

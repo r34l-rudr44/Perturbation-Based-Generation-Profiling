@@ -1,0 +1,114 @@
+[
+  {
+    "id": "test-museum-0-0",
+    "group_id": "test-museum",
+    "target": "item_museum",
+    "may_publish": false,
+    "repeated": false
+  },
+  {
+    "id": "test-museum-0-1",
+    "group_id": "test-museum",
+    "target": "item_museum",
+    "may_publish": false,
+    "repeated": true
+  },
+  {
+    "id": "test-museum-1-0",
+    "group_id": "test-museum",
+    "target": "item_museum",
+    "may_publish": true,
+    "repeated": false
+  },
+  {
+    "id": "test-museum-1-1",
+    "group_id": "test-museum",
+    "target": "item_museum",
+    "may_publish": true,
+    "repeated": true
+  },
+  {
+    "id": "test-orchard-0-0",
+    "group_id": "test-orchard",
+    "target": "item_orchard",
+    "may_publish": false,
+    "repeated": false
+  },
+  {
+    "id": "test-orchard-0-1",
+    "group_id": "test-orchard",
+    "target": "item_orchard",
+    "may_publish": false,
+    "repeated": true
+  },
+  {
+    "id": "test-orchard-1-0",
+    "group_id": "test-orchard",
+    "target": "item_orchard",
+    "may_publish": true,
+    "repeated": false
+  },
+  {
+    "id": "test-orchard-1-1",
+    "group_id": "test-orchard",
+    "target": "item_orchard",
+    "may_publish": true,
+    "repeated": true
+  },
+  {
+    "id": "test-marina-0-0",
+    "group_id": "test-marina",
+    "target": "item_marina",
+    "may_publish": false,
+    "repeated": false
+  },
+  {
+    "id": "test-marina-0-1",
+    "group_id": "test-marina",
+    "target": "item_marina",
+    "may_publish": false,
+    "repeated": true
+  },
+  {
+    "id": "test-marina-1-0",
+    "group_id": "test-marina",
+    "target": "item_marina",
+    "may_publish": true,
+    "repeated": false
+  },
+  {
+    "id": "test-marina-1-1",
+    "group_id": "test-marina",
+    "target": "item_marina",
+    "may_publish": true,
+    "repeated": true
+  },
+  {
+    "id": "test-observatory-0-0",
+    "group_id": "test-observatory",
+    "target": "item_observatory",
+    "may_publish": false,
+    "repeated": false
+  },
+  {
+    "id": "test-observatory-0-1",
+    "group_id": "test-observatory",
+    "target": "item_observatory",
+    "may_publish": false,
+    "repeated": true
+  },
+  {
+    "id": "test-observatory-1-0",
+    "group_id": "test-observatory",
+    "target": "item_observatory",
+    "may_publish": true,
+    "repeated": false
+  },
+  {
+    "id": "test-observatory-1-1",
+    "group_id": "test-observatory",
+    "target": "item_observatory",
+    "may_publish": true,
+    "repeated": true
+  }
+]

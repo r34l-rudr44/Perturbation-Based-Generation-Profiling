@@ -1,0 +1,8 @@
+{
+  "score_successes_validated": 208,
+  "actor_successes_validated": 32,
+  "diagnostic_successes_validated": 2,
+  "fixture_steps_replayed": 32,
+  "stored_scores_recomputed": 104,
+  "calibration_episodes_revalidated": 20
+}

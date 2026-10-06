@@ -1,0 +1,33 @@
+{
+  "status": 200,
+  "response": {
+    "object": "list",
+    "data": [
+      {
+        "id": "turboderp/Qwen3.8-27B-exl3",
+        "object": "model",
+        "created": 1791274781,
+        "owned_by": "vllm",
+        "root": "turboderp/Qwen3.8-27B-exl3",
+        "parent": null,
+        "max_model_len": 65536,
+        "permission": [
+          {
+            "id": "modelperm-96fa57a4e2d8655b",
+            "object": "model_permission",
+            "created": 1791274781,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  }
+}
